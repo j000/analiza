@@ -1,0 +1,131 @@
+\documentclass{article}
+% packages
+% page geometry
+\usepackage[
+	a4paper,
+	margin=1.5cm,
+	includehead,
+	includefoot
+]{geometry}
+% utf8 support
+\usepackage[utf8]{inputenc}
+% because...
+\usepackage[T1]{fontenc}
+% language support
+\usepackage[polish]{babel}
+% better math
+\usepackage{amsmath}
+
+% hyperlinks formatting
+\usepackage[
+	colorlinks,
+	linkcolor=black,
+	urlcolor=black,
+	citecolor=black,
+	plainpages=false,
+	pdfpagelabels,
+	backref,
+	breaklinks
+]{hyperref}
+\makeatletter
+\renewcommand{\Hy@numberline}[1]{#1. }
+\makeatother
+
+%custom headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\makeatletter
+\rhead{\footnotesize \@title}
+\cfoot{\footnotesize Page \thepage \hspace{1pt} of \pageref{LastPage}}
+\makeatother
+
+% for \LastPage
+\usepackage{lastpage}
+
+% dotted lines in ToC
+\usepackage{tocloft} % for dots in ToC
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecaftersnum}{. }
+
+% dots in bookmarks
+\usepackage{bookmark}
+\bookmarksetup{
+	numbered,
+	open,
+}
+
+% don't hypenate sections
+\usepackage[raggedright]{titlesec}
+% smaller font for title dots in section titles
+\titleformat{\section}{\normalfont\fontsize{12}{15}\bfseries}{\thesection.}{1em}{}
+
+% define title
+\title{Zagadnienia z analizy}
+
+\begin{document}
+
+% bookmark title page
+\makeatletter
+\pdfbookmark[0]{\@title}{title}
+\makeatother
+
+% title page
+\pagenumbering{gobble}
+\begin{titlepage}
+	\makeatletter
+	\vfill
+	\begin{center}
+		\vspace*{0.3\textheight}
+		{\LARGE
+			\@title
+		\par}
+	\end{center}\par
+	\vfill
+	\@thanks
+	\vfill
+	\tableofcontents
+	\vfill
+	\makeatother
+\end{titlepage}
+
+\newpage
+
+\linespread{1.3}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\setcounter{section}{63}
+\section{Podać i udowodnić zasadnicze twierdzenie rachunku całkowego,
+które pozwala obliczyć całkę Reimanna za pomocą funkcji pierwotnej.}
+Text
+
+
+\section{Co to jest całka niewłaściwa w sensie Reimanna?}
+Text
+
+
+\section{Obliczyć całkę niewłaściwą funkcji
+	\texorpdfstring{$ 1 / x^p $}{1/x\textasciicircum p}
+	w przedziale
+	\texorpdfstring{$ [ 1, \infty ) $}{[1,inf)}.
+	Dla jakich wartości parametru p całka ta jest zbieżna?}
+Text
+
+
+\section{Podać i udowodnić kryterium całkowe zbieżności szeregu.
+	Zastosować to kryterium do szeregu harmonicznego z wykładnikiem
+	\texorpdfstring{$ \alpha $}{a}.}
+Text
+
+
+\section{Podać wzór na długość krzywej zadanej parametrycznie.}
+Text
+
+
+\section{Podać wzór na objętość i pole powierzchni bryły obrotowej.}
+Text
+
+
+\end{document}
