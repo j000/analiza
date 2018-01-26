@@ -1,15 +1,27 @@
 SHELL := /bin/sh
 
 .PHONY: all
-all: analiza.pdf
-.INTERMEDIATE: analiza.dvi
+all: analiza.pdf mostly-clean
 
-%.dvi %.out.ps: %.tex
-	latex -file-line-error -interaction batchmode $^
-	@-$(RM) -f $*.log $*.aux $*.out $*.toc
+analiza.pdf: obrot_bryly.pdf_tex
 
-%.ps: %.dvi %.out.ps
-	dvips -o $@ $*.dvi
+%.pdf: %.tex
+# run twice for hyperref
+	pdflatex -interaction batchmode $^
+	pdflatex -interaction batchmode $^
 
-%.pdf: %.ps
-	ps2pdf -dPDFSETTINGS=/printer -dEmbedAllFonts=true -dSubsetFonts=true -dMaxSubsetPct=100 $^ $@
+%.pdf_tex: %.svg
+	inkscape -D -z --file=$*.svg --export-pdf=$*.pdf --export-latex
+	sed -i '/makebox/d; /page=2/d' $@
+
+.PHONY: mostly-clean
+mostly-clean:
+	@-$(RM) -f *.log
+	@-$(RM) -f *.aux
+	@-$(RM) -f *.out
+	@-$(RM) -f *.toc
+	@-$(RM) -f *.pdf_tex
+
+.PHONY: clean
+clean: mostly-clean
+	@-$(RM) -f *.pdf
