@@ -172,6 +172,7 @@
 
 \section{Co to jest funkcja? dziedzina funkcji? zbiór wartości funkcji?}
 Niech $X$, $Y$ będą zbiorami niepustymi.
+\subsection{Funkcja}
 Funkcją przekształcającą zbiór $X$ w zbiór $Y$ nazywamy dowolny podzbiór $f \subseteq X \times Y$ taki, że dla każdego $x \in X$ istnieje dokładnie jeden $y \in Y$, dla którego $(x,y)\in f$.
 Oznaczamy to jako $f \colon X \to Y$. Funkcję nazywamy również przekształceniem lub przyporządkowaniem.
 
@@ -181,9 +182,11 @@ Relację $f \subseteq X \times Y$ nazywamy funkcją jeżeli:
 	\item $\forall x \in X \forall y \in Y \forall z \in Z \colon (x,y)\in f \land (x,z)\in f \implies y = z$
 \end{itemize}
 
+\subsection{Dziedzina}
 Zbiór $D_f \subseteq X$ nazywamy dziedziną funkcji $f$, jeżeli spełnia warunek:
 $x \in D_f \iff \exists y \in Y \colon y = f(x)$
 
+\subsection{Przeciwdziedzina}
 Zbiór $f(x) \subseteq Y$ nazywamy zbiorem wartości funkcji $f$, jeżeli spełnia warunek:
 $y \in f(X) \iff \exists x \in X \colon y = f(x)$
 
@@ -194,8 +197,10 @@ Jeżeli $f \colon X \to Y$ jest bijekcją, to można zdefiniować funkcję odwro
 ${f^{-1}(y)=x \iff f(x)=y}$.
 Przykład: $y=a^x$ - odwrotna: $y = \log_a{x}$
 
-\section{Co nazywamy obrazem, przeciw obrazem zbioru przez funkcję? Podać ich własności.}
-Niech $f \colon X \to Y$. Jeżeli $A \subseteq X$, to zbiór ${f(A) = \{y \in Y \colon \exists x \in A \colon y=f(x)\}}$ nazywamy obrazem zbioru $A$.
+\section{Co nazywamy obrazem, przeciwobrazem zbioru przez funkcję? Podać ich własności.}
+Niech $f \colon X \to Y$.
+\subsection{Obraz}
+Obrazem zbioru $A \subseteq X$ nazywamy zbiór ${f(A) = \{y \in Y \colon \exists x \in A \colon y=f(x)\}}$.
 \\Własności ($A, B \subseteq X$):
 \begin{itemize}
 	\item monotoniczność: $A \subseteq B \implies f(A) \subseteq f(B)$
@@ -204,7 +209,8 @@ Niech $f \colon X \to Y$. Jeżeli $A \subseteq X$, to zbiór ${f(A) = \{y \in Y 
 	\item $f(A)\setminus f(B) \subseteq f(A \setminus B)$ (równość jeżeli $f$ jest różnowartościowa)
 \end{itemize}
 
-Niech $f \colon X \to Y$. Przeciw obrazem zbioru $C \subseteq Y$ nazywamy zbiór: ${f^{-1}(C) = \{ x \in X \colon f(x) \in C \}}$.
+\subsection{Przecwiobraz}
+Przeciwobrazem zbioru $C \subseteq Y$ nazywamy zbiór: ${f^{-1}(C) = \{ x \in X \colon f(x) \in C \}}$.
 \\Własności ($C, D \subseteq Y$):
 \begin{itemize}
 	\item monotoniczność: $C \subseteq D \implies f^{-1}(C) \subseteq f^{-1}(D)$
@@ -412,7 +418,7 @@ Bijekcja: funkcja jest iniekcją i suriekcją.
 \end{multicols}
 
 \section{Co to jest homografia? Funkcja wymierna?}
-Funkcję $f(x) = \frac{ax+b}{cx+d}$, gdzie $ad-bc \neq 0$ i $c \neq 0$, nazywamy funkcją homograficzną. Szczególnym przypadkiem homografii jest funkcja w postaci $f(x) = \frac{a}{x}$.
+Funkcję $f(x) = \frac{ax+b}{cx+d}$, gdzie $a,b,c,d \in \mathbb{C}$ i $ad-bc \neq 0$, nazywamy funkcją homograficzną. Szczególnym przypadkiem homografii jest funkcja w postaci $f(x) = \frac{a}{x}$.
 
 Jeżeli funkcje $g(x)$ i $h(x) \neq 0$ są wielomianami, to funkcję $f(x)=\frac{g(x)}{h(x)}$ nazywa się funkcją wymierną.
 
