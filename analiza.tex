@@ -150,8 +150,253 @@
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-\setcounter{section}{63}
+\section{Co to jest funkcja? dziedzina funkcji? zbiór wartości funkcji?}
+Niech $X$, $Y$ będą zbiorami niepustymi.
+Funkcją przekształcającą zbiór $X$ w zbiór $Y$ nazywamy dowolny podzbiór $f \subseteq X \times Y$ taki, że dla każdego $x \in X$ istnieje dokładnie jeden $y \in Y$, dla którego $(x,y)\in f$.
+Oznaczamy to jako $f \colon X \to Y$. Funkcję nazywamy również przekształceniem lub przyporządkowaniem.
 
+Relację $f \subseteq X \times Y$ nazywamy funkcją jeżeli:
+\begin{itemize}
+	\item $\forall x \in X \exists y \in Y \colon (x,y) \in f$
+	\item $\forall x \in X \forall y \in Y \forall z \in Z \colon (x,y)\in f \land (x,z)\in f \implies y = z$
+\end{itemize}
+
+Zbiór $D_f \subseteq X$ nazywamy dziedziną funkcji $f$, jeżeli spełnia warunek:
+$x \in D_f \iff \exists y \in Y \colon y = f(x)$
+
+Zbiór $f(x) \subseteq Y$ nazywamy zbiorem wartości funkcji $f$, jeżeli spełnia warunek:
+$y \in f(X) \iff \exists x \in X \colon y = f(x)$
+
+\section{Co to jest złożenie funkcji? funkcja odwrotna?}
+Jeżeli $f \colon X \to Y$ oraz $g \colon Y \to Z$ są funkcjami, to ich złożeniem nazywamy funkcję $h \colon X \to Z$ taką, że ${h(x) = g(f(x))}$ dla $x \in X$. Złożenie dwóch funkcji oznaczamy $h=g \circ f$, dla dowolnego $x$ z dziedziny funkcji $f$ mamy równość $h(x)=g(f(x))=(g \circ f)(x)$.
+
+Jeżeli $f \colon X \to Y$ jest bijekcją, to można zdefiniować funkcję odwrotną $f^{-1} \colon Y \to X$:
+${f^{-1}(y)=x \iff f(x)=y}$.
+Przykład: $y=a^x$ - odwrotna: $y = \log_a{x}$
+
+\section{Co nazywamy obrazem, przeciw obrazem zbioru przez funkcję? Podać ich własności.}
+Niech $f \colon X \to Y$. Jeżeli $A \subseteq X$, to zbiór ${f(A) = \{y \in Y \colon \exists x \in A \colon y=f(x)\}}$ nazywamy obrazem zbioru $A$.
+\\Własności ($A, B \subseteq X$):
+\begin{itemize}
+	\item monotoniczność: $A \subseteq B \implies f(A) \subseteq f(B)$
+	\item $f(A \cup B) = f(A) \cup f(B)$
+	\item $f(A \cap B) \subseteq f(A) \cap f(B)$ (równość jeżeli $f$ jest różnowartościowa)
+	\item $f(A)\setminus f(B) \subseteq f(A \setminus B)$ (równość jeżeli $f$ jest różnowartościowa)
+\end{itemize}
+
+Niech $f \colon X \to Y$. Przeciw obrazem zbioru $C \subseteq Y$ nazywamy zbiór: ${f^{-1}(C) = \{ x \in X \colon f(x) \in C \}}$.
+\\Własności ($C, D \subseteq Y$):
+\begin{itemize}
+	\item monotoniczność: $C \subseteq D \implies f^{-1}(C) \subseteq f^{-1}(D)$
+	\item $f^{-1}(C \cup D) = f^{-1}(C) \cup f^{-1}(D)$
+	\item $f^{-1}(C \cap D) = f^{-1}(C) \cap f^{-1}(D)$
+	\item $f^{-1}(C) \setminus f^{-1}(D) = f^{-1}(C \setminus D)$
+	\item $f^{-1}(Y \setminus D) = X \setminus f^{-1}(D)$
+\end{itemize}
+
+\section{Co to jest iniekcja, suriekcja, bijekcja?}
+Iniekcja: ${\forall x,y \in X \colon x \neq y \implies f(x) \neq f(y)}$ (Równoważnie: $f(x) = f(y) \iff x = y$)
+
+Suriekcja: ${\forall y \in Y \exists x \in X \colon f(x)=y}$
+
+Bijekcja: funkcja jest iniekcją i suriekcją.
+
+\section{Naszkicować wykresy funkcji wykładniczych i logarytmicznych}
+\begin{multicols}{2}
+	\centering
+
+	\begin{tikzpicture}
+			[
+				every circle/.style={radius=.05},
+				declare function={
+					r={3};
+				}
+			]
+		\draw [domain=-r:r] plot (\x, {r^(1/r)^\x});
+		\draw [fill] (0,1) node [right] {$1$} circle;
+		\draw [thick,->]
+			(-r,0) -- (r,0) node [below] {$x$};
+		\draw [thick,->]
+			(0,0) -- (0,r) node [right] {$y$};
+	\end{tikzpicture}
+	\\$y=a^x$, $a>1$
+
+	\begin{tikzpicture}
+			[
+				every circle/.style={radius=.05},
+				declare function={
+					r={3};
+				}
+			]
+		\draw [domain=-r:r] plot (\x, {r^(-1/r)^\x});
+		\draw [fill] (0,1) node [right] {$1$} circle;
+		\draw [thick,->]
+			(-r,0) -- (r,0) node [below] {$x$};
+		\draw [thick,->]
+			(0,0) -- (0,r) node [right] {$y$};
+	\end{tikzpicture}
+	\\$y=a^x$, $a \in (0,1)$
+\end{multicols}
+
+\begin{multicols}{2}
+	\centering
+
+	\begin{tikzpicture}
+			[
+				every circle/.style={radius=.05},
+				declare function={
+					r={3};
+				}
+			]
+		\draw [domain={1/r}:r] plot (\x, {ln(\x)/ln(r^(1/r))});
+		\draw [fill] (1,0) node [below] {$1$} circle;
+		\draw [thick,->]
+			(0,0) -- (r,0) node [below] {$x$};
+		\draw [thick,->]
+			(0,-r) -- (0,r) node [right] {$y$};
+	\end{tikzpicture}
+	\\$y=\log_a(x)$, $a>1$
+
+	\begin{tikzpicture}
+			[
+				every circle/.style={radius=.05},
+				declare function={
+					r={3};
+				}
+			]
+		\draw [domain={1/r}:r] plot (\x, {ln(\x)/ln(r^(-1/r))});
+		\draw [fill] (1,0) node [below] {$1$} circle;
+		\draw [thick,->]
+			(0,0) -- (r,0) node [below] {$x$};
+		\draw [thick,->]
+			(0,-r) -- (0,r) node [right] {$y$};
+	\end{tikzpicture}
+	\\$y=\log_a(x)$, $a \in (0,1)$
+\end{multicols}
+
+\section{Naszkicować wykresy funkcji trygonometrycznych i cyklometrycznych}
+\begin{multicols}{2}
+	\centering
+	\begin{tikzpicture}
+			[
+				every circle/.style={radius=.05},
+				declare function={
+					r={2.1};
+				}
+			]
+		\draw [
+			%blue,
+				domain={-0.5*pi}:{r*pi},
+				samples=100
+			]
+			plot (\x, {sin(deg(\x))})
+			node [right] {$y=sin(x)$};
+		\draw
+			[
+			%green,
+				domain={-0.5*pi}:{r*pi},
+				samples=100
+			]
+			plot (\x, {cos(deg(\x))})
+			node [right] {$y=cos(x)$};
+
+		\draw [fill] (0,1) node [right] {$1$} circle;
+		\draw [fill] (0,-1) node [right] {$-1$} circle;
+
+		\draw [fill] (pi,0) node [below] {$\pi$} circle;
+		\draw [fill] (2*pi,0) node [below] {$2\pi$} circle;
+
+		\draw [fill] (pi/2,0) node [below] {$\frac{\pi}{2}$} circle;
+		\draw [fill] (3*pi/2,0) node [below] {$\frac{3\pi}{2}$} circle;
+
+		\draw [fill] (pi/4,0) node [below] {$\frac{\pi}{4}$} circle;
+		\draw [fill] (3*pi/4,0) node [below] {$\frac{3\pi}{4}$} circle;
+		\draw [fill] (5*pi/4,0) node [below] {$\frac{5\pi}{4}$} circle;
+		\draw [fill] (7*pi/4,0) node [below] {$\frac{7\pi}{4}$} circle;
+
+		\draw [thick,->]
+			(-0.5*pi,0) -- (r*pi,0) node [below] {$x$};
+		\draw [thick,->]
+			(0,-1.5) -- (0,1.5) node [right] {$y$};
+	\end{tikzpicture}
+
+	\begin{tikzpicture}
+			[
+				every circle/.style={radius=.05},
+			]
+
+		\draw [
+			%color=blue,
+				domain=-1:1,
+				samples=100
+			]
+			plot (\x, {rad(asin(\x))})
+			node [right] {$y=\arcsin(x)$};
+		\draw [
+			%color=green,
+				domain=-1:1,
+				samples=100
+			]
+			plot (\x, {rad(acos(\x))})
+			node [above right] {$y=\arccos(x)$};
+
+		\draw [fill] (1,0) node [below] {$1$} circle;
+		\draw [fill] (-1,0) node [below] {$-1$} circle;
+
+		\draw [fill] (0,-pi/2) node [right] {$-\frac{\pi}{2}$} circle;
+		\draw [fill] (0,pi/2) node [right] {$\frac{\pi}{2}$} circle;
+		\draw [fill] (0,pi) node [right] {$\pi$} circle;
+
+		\draw [thick,->]
+			(-1.5,0) -- (1.5,0) node [below] {x};
+		\draw [thick,->]
+			(0,-2) -- (0,4) node [right] {y};
+	\end{tikzpicture}
+
+	\begin{tikzpicture}
+			[
+				every circle/.style={radius=.05},
+				declare function={
+					limit=0.1;
+				}
+			]
+
+		\draw [
+		%color=blue,
+				domain={-pi/2+limit}:{pi/2-limit},
+				samples=100
+			]
+			plot (\x, {tan(deg(\x))/3})
+			node [right] {$y=\tg(x)$};
+		\draw [
+			%color=green,
+				domain={0+limit}:{pi-limit},
+				samples=100
+			]
+			plot (\x, {cot(deg(\x))/3})
+			node [right] {$y=\ctg(x)$};
+
+		\draw [fill] (-pi/2,0) node [below] {$-\frac{\pi}{2}$} circle;
+		\draw [fill] (pi/2,0) node [below] {$\frac{\pi}{2}$} circle;
+		\draw [fill] (pi,0) node [below] {$\pi$} circle;
+		\draw [dotted] (-pi/2,-4) -- (-pi/2,4);
+		\draw [dotted] (pi/2,-4) -- (pi/2,4);
+		\draw [dotted] (pi,-4) -- (pi,4);
+
+		\draw [thick,->]
+			(-2,0) -- (3.5,0) node [below] {x};
+		\draw [thick,->]
+			(0,-4) -- (0,4) node [right] {y};
+	\end{tikzpicture}
+	%TODO: arctg arcctg
+\end{multicols}
+
+\section{Co to jest homografia? Funkcja wymierna?}
+Funkcję $f(x) = \frac{ax+b}{cx+d}$, gdzie $ad-bc \neq 0$ i $c \neq 0$, nazywamy funkcją homograficzną. Szczególnym przypadkiem homografii jest funkcja w postaci $f(x) = \frac{a}{x}$.
+
+Jeżeli funkcje $g(x)$ i $h(x) \neq 0$ są wielomianami, to funkcję $f(x)=\frac{g(x)}{h(x)}$ nazywa się funkcją wymierną.
+
+\setcounter{section}{63}
 \section{Podać i udowodnić zasadnicze twierdzenie rachunku całkowego,
 które pozwala obliczyć całkę Riemanna za pomocą funkcji pierwotnej.}
 
