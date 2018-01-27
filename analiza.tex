@@ -89,9 +89,7 @@
 \lefthyphenmin=62
 
 % don't hypenate sections
-\usepackage[
-	%raggedright
-]{titlesec}
+\usepackage{titlesec}
 \titlelabel{\thetitle.\enskip}
 % smaller font for title dots in section titles
 % \titleformat{\section}{\normalfont\fontsize{12}{15}\bfseries}{\thesection.}{0.75em}{}
@@ -106,10 +104,19 @@
 
 % helper
 % \newcommand*\from{ \colon }
+\let\implies\Rightarrow
 \let\iff\Leftrightarrow
 \let\temp\phi
 \let\phi\varphi
 \let\varphi\temp
+\let\oldforall\forall
+\let\forall\undefined
+\DeclareMathOperator{\forall}{\mkern2mu\oldforall}
+\let\oldexists\exists
+\let\exists\undefined
+\DeclareMathOperator{\exists}{\mkern2mu\oldexists}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
 
 % define title
 \title{Zagadnienia z analizy}
@@ -187,7 +194,6 @@ jest jej dowolną funkcją pierwotną, to zachodzi równość:
 \end{proof}
 
 \section{Co to jest całka niewłaściwa w sensie Riemanna?}
-
 \subsection{Całka niewłaściwa Riemanna w przedziale $[a,b)$ lub $(a,b]$}
 Niech ${f \colon [a,b) \to \mathbb{R}}$ będzie funkcją całkowalną w sensie Riemanna
 	na każdym z przedziałów domkniętych ${[a,\beta]}$,
@@ -204,15 +210,9 @@ Niech ${f \colon [a,b) \to \mathbb{R}}$ będzie funkcją całkowalną w sensie R
 		\end{equation*}
 	\end{definition}
 
-	Jeżeli granica istnieje i jest skończona, to mówimy,
-	że całka niewłaściwa ${\int_a^b f(x) \mathrm{d}x }$ jest zbieżna.
-	Natomiast jeżeli granica ta nie istnieje lub jest niewłaściwa, to mówimy,
-	że całka niewłaściwa ${\int_a^b f(x) \mathrm{d}x}$ jest rozbieżna.
+	Jeżeli granica istnieje i jest skończona, to mówimy, że całka niewłaściwa ${\int_a^b f(x) \mathrm{d}x }$ jest zbieżna. Natomiast jeżeli granica ta nie istnieje lub jest niewłaściwa, to mówimy, że całka niewłaściwa ${\int_a^b f(x) \mathrm{d}x}$ jest rozbieżna.
 
-	W analogiczny sposób definiuje się całkę niewłaściwą Riemanna
-${\int_a^b f(x) \mathrm{d}x}$ funkcji $f$ określonej na przedziale ${(a,b]}$,
-jak również pojęcia jej zbieżności i rozbieżności.
-Przyjmujemy wówczas, że
+W analogiczny sposób definiuje się całkę niewłaściwą Riemanna ${\int_a^b f(x) \mathrm{d}x}$ funkcji $f$ określonej na przedziale ${(a,b]}$, jak również pojęcia jej zbieżności i rozbieżności. Przyjmujemy wówczas, że
 \begin{equation*}
 	\int_a^b f(x) \mathrm{d}x \coloneqq \lim_{\alpha \to a^+} \int_{\alpha}^b f(x) \mathrm{d}x
 \end{equation*}
@@ -263,225 +263,220 @@ W powyższych definicjach \ref{def.1} i \ref{def.2} można podstawić $-\infty$ 
 \section{Obliczyć całkę niewłaściwą funkcji
 	\texorpdfstring{$ 1 / x^p $}{1/x\textasciicircum p}
 	w przedziale
-	\texorpdfstring{$ [ 1, \infty ) $}{[1,inf)}.
-	Dla jakich wartości parametru $p$ całka ta jest zbieżna?}
+	\texorpdfstring{$ [ 1, \infty ) $}{[1,inf)}. %]
+	Dla jakich wartości parametru $p$ całka ta jest zbieżna?
+}
+Przypadek $p=1$:
+\begin{equation*}
+	\int_1^\infty \frac{\mathrm{d}x}{x}
+	= \lim_{\beta \to \infty} \left. \ln x \right|_1^{\beta}
+	= \lim_{\beta \to \infty} (\ln \beta -\ln 1)
+	= \infty
+\end{equation*}
 
-% \subsection{Przypadek $p=1$}
-	Przypadek $p=1$:
-	\begin{equation*}
-		\int_1^\infty \frac{\mathrm{d}x}{x}
-		= \lim_{\beta \to \infty} \left. \ln x \right|_1^{\beta}
-		= \lim_{\beta \to \infty} (\ln \beta -\ln 1)
-		= \infty
-	\end{equation*}
+Przypadek $p\neq 1$:
+\begin{equation*}
+	\int_1^{\infty}\frac{\mathrm{d}x}{x^p}
+	= \int_1^{\infty} x^{-p} \mathrm{d}x
+	= \lim_{\beta \to \infty}\int_1^\beta x^{-p} \mathrm{d}x
+	= \lim_{\beta \to \infty} \left. \frac{x^{-p+1}}{-p+1} \right|_1^\beta
+	= \lim_{\beta \to \infty} \left. \frac{1}{(1-p)x^{p-1}} \right|_1^\beta
+	= \frac{1}{1-p} \lim_{\beta \to \infty} \left( \frac{1}{\beta^{p-1}} - \frac{1}{1^{p-1}} \right)
+\end{equation*}
 
-% \subsection{Przypadek \texorpdfstring{$p\neq1$}{p!=1}}
-	Przypadek $p\neq 1$:
-	\begin{equation*}
-		\int_1^{\infty}\frac{\mathrm{d}x}{x^p}
-		= \int_1^{\infty} x^{-p} \mathrm{d}x
-		= \lim_{\beta \to \infty}\int_1^\beta x^{-p} \mathrm{d}x
-		= \lim_{\beta \to \infty} \left. \frac{x^{-p+1}}{-p+1} \right|_1^\beta
-		= \lim_{\beta \to \infty} \left. \frac{1}{(1-p)x^{p-1}} \right|_1^\beta
-		= \frac{1}{1-p} \lim_{\beta \to \infty} \left( \frac{1}{\beta^{p-1}} - \frac{1}{1^{p-1}} \right)
-	\end{equation*}
+Zauważmy, że
+\begin{equation*}
+	\lim_{\beta \to \infty} \frac{1}{\beta^{p-1}}
+	= \left\{
+		\begin{array}{ll}
+			\infty & \text{ gdy } p-1< 0
+			\\ 0 & \text{ gdy } p-1> 0
+		\end{array}
+	\right. %}
+\end{equation*}
 
-	Zauważmy, że
-	\begin{equation*}
-		\lim_{\beta \to \infty} \frac{1}{\beta^{p-1}}
-		= \left\{
-			\begin{array}{ll}
-				\infty & \text{ gdy } p-1< 0
-				\\ 0 & \text{ gdy } p-1> 0
-			\end{array}
-			\right.
-		\end{equation*}
+A zatem
+\begin{equation*}
+	\int_1^\infty \frac{\mathrm{d}x}{x^p}
+	= \left\{
+		\begin{array}{ll}
+			\infty & \text{ gdy } p< 1
+			\\ \frac{1}{(p-1)1^{p-1}} & \text{ gdy } p> 1
+		\end{array}
+	\right. %}
+\end{equation*}
 
-		A zatem
-		\begin{equation*}
-			\int_1^\infty \frac{\mathrm{d}x}{x^p}
-			= \left\{
-				\begin{array}{ll}
-					\infty & \text{ gdy } p< 1
-					\\ \frac{1}{(p-1)1^{p-1}} & \text{ gdy } p> 1
-				\end{array}
-				\right.
-			\end{equation*}
+\textit{Reasumując:}
+\begin{equation*}
+	\int_1^\infty \frac{\mathrm{d}x}{x^p}
+	= \left\{
+		\begin{array}{lcl}
+			\infty & \textnormal{ (jest rozbieżna) } & \text{ gdy } p\leq1
+			\\ \frac{1}{(p-1)} & \textnormal{ (jest zbieżna) } & \text{ gdy } p>1
+		\end{array}
+	\right. %}
+\end{equation*}
 
-			\textit{Reasumując:}
-			\begin{equation*}
-				\int_1^\infty \frac{\mathrm{d}x}{x^p}
-				= \left\{
-					\begin{array}{lcl}
-						\infty & \textnormal{ (jest rozbieżna) } & \text{ gdy } p\leq1
-						\\ \frac{1}{(p-1)} & \textnormal{ (jest zbieżna) } & \text{ gdy } p>1
-					\end{array}
-					\right.
-				\end{equation*}
-
-				\section{Podać i udowodnić kryterium całkowe zbieżności szeregu.
-					Zastosować to kryterium do szeregu harmonicznego z wykładnikiem
-					\texorpdfstring{$ \alpha $}{a}.}
-					\subsection{Teoria}
-					Niech $f \colon [n_0,\infty) \to \mathbb{R}$, $f(n)$ jest nierosnąca i nieujemna dla $n> n_0$.
-						[Analogicznie dla niemalejącej i niedodatniej.]
-						\begin{equation*}
-							\textnormal{Wówczas: \enskip}
-							\sum_{n={n_0}}^\infty f(n) \textnormal{ \enskip jest zbieżny}
-							\iff
-							\int_{n_0}^\infty f(n) \mathrm{d}n \textnormal{ \enskip jest zbieżna}
-						\end{equation*}
-						\begin{proof}%{\textit{(z wykładu)}}
-							Weźmy $a_n \coloneqq \int_n^{n+1} f(x) \mathrm{d}x$ ($n \geq n_0$, $n \in \mathbb{N}$).
-							Zauważmy, że $f(n)$ jest równe polu prostokąta o bokach $1$~i~$f(n)$.
-							Mamy:
-							$a_n \leq f(n) \leq a_{n-1}$
+\section{Podać i udowodnić kryterium całkowe zbieżności szeregu.
+	Zastosować to kryterium do szeregu harmonicznego z wykładnikiem
+	\texorpdfstring{$ \alpha $}{a}.
+}
+\subsection{Teoria}
+Niech $f \colon [n_0,\infty) \to \mathbb{R}$, $f(n)$ jest nierosnąca i nieujemna dla $n> n_0$. %]
+[Analogicznie dla niemalejącej i niedodatniej.]
+\begin{equation*}
+	\textnormal{Wówczas: \enskip}
+	\sum_{n={n_0}}^\infty f(n) \textnormal{ \enskip jest zbieżny}
+	\iff
+	\int_{n_0}^\infty f(n) \mathrm{d}n \textnormal{ \enskip jest zbieżna}
+\end{equation*}
+\begin{proof}%{\textit{(z wykładu)}}
+	Weźmy $a_n \coloneqq \int_n^{n+1} f(x) \mathrm{d}x$ ($n \geq n_0$, $n \in \mathbb{N}$).
+	Zauważmy, że $f(n)$ jest równe polu prostokąta o bokach $1$~i~$f(n)$.
+	Mamy:
+	$a_n \leq f(n) \leq a_{n-1}$
 		% ${\int_n^{n+1} f(x) \mathrm{d}x \leq f(n) \leq \int_{n-1}^n f(x) \mathrm{d}x}$
-							.
-							\begin{multicols}{2}
-								\centering
-		% rysunki do dowodu
-								\begin{tikzpicture}[
-										scale=0.8,
-										every circle/.style={radius=.05},
-										sum/.style={pattern=north west lines,pattern color=yellow},
-										declare function={
-											f(\x) = {4.5 / \x};
-										}
-									]
-									\draw [sum] (2,0) rectangle (1,{f(1)});
-									\draw [sum] (3,0) rectangle (2,{f(2)});
-									\draw [sum] (4,0) rectangle (3,{f(3)});
-									\draw [sum] (5,0) rectangle (4,{f(4)});
+	.
+	\begin{multicols}{2}
+		\centering
+								% rysunki do dowodu
+		\begin{tikzpicture}
+				[
+					scale=0.8,
+					every circle/.style={radius=.05},
+					sum/.style={pattern=north west lines,pattern color=yellow},
+					declare function={
+						f(\x) = {4.5 / \x};
+					}
+				]
+			\draw [sum] (2,0) rectangle (1,{f(1)});
+			\draw [sum] (3,0) rectangle (2,{f(2)});
+			\draw [sum] (4,0) rectangle (3,{f(3)});
+			\draw [sum] (5,0) rectangle (4,{f(4)});
 
-									\fill [pattern=north east lines, pattern color=purple,domain=1:5,variable=\x]
-									(1,0)
-									-- plot (\x, {f(\x)})
-									-- (5,0)
-									-- cycle;
+				\fill [pattern=north east lines, pattern color=purple,domain=1:5,variable=\x]
+				(1,0)
+				-- plot (\x, {f(\x)})
+				-- (5,0)
+				-- cycle;
 
-									\draw [domain=1:6] plot (\x, {f(\x)});
-									\draw [fill] (1,{f(1)}) circle;
-									\draw [thick,<->]
-									(0,5) node [left] {$y$} --
-									(0,0) --
-									(6,0) node [below] {$x$};
-									\draw [fill] (1,0) node [below] {$\phantom{-1} n_0 \phantom{-1}$} circle;
-									\draw [fill] (3,0) node [below] {$n-1$} circle;
-									\draw [fill] (4,0) node [below] {$\phantom{-1}n\phantom{-1}$} circle;
-									\draw [fill] (5,0) node [below] {$n+1$} circle;
-								\end{tikzpicture}
+			\draw [domain=1:6] plot (\x, {f(\x)});
+			\draw [fill] (1,{f(1)}) circle;
+			\draw [thick,<->]
+				(0,5) node [left] {$y$} --
+				(0,0) --
+				(6,0) node [below] {$x$};
+			\draw [fill] (1,0) node [below] {$\phantom{-1} n_0 \phantom{-1}$} circle;
+			\draw [fill] (3,0) node [below] {$n-1$} circle;
+			\draw [fill] (4,0) node [below] {$\phantom{-1}n\phantom{-1}$} circle;
+			\draw [fill] (5,0) node [below] {$n+1$} circle;
+		\end{tikzpicture}
 			% \caption{$\int_{n_0}^{n+1}f(x) \mathrm{d}x \leq \sum_{i=n_0}^nf(i)$}
-								\begin{equation*}
-									\int_{n_0}^{n+1}f(x) \mathrm{d}x \leq \sum_{i=n_0}^nf(i)
-								\end{equation*}
-								\columnbreak
-								\vfill\null
-								\begin{tikzpicture}[
-										scale=0.8,
-										every circle/.style={radius=.05},
-										sum/.style={pattern=north west lines,pattern color=yellow},
-										declare function={
-											f(\x) = {4.5 / \x};
-										}
-									]
-									\draw [sum] (1,0) rectangle (2,{f(2)});
-									\draw [sum] (2,0) rectangle (3,{f(3)});
-									\draw [sum] (3,0) rectangle (4,{f(4)});
+		\begin{equation*}
+			\int_{n_0}^{n+1}f(x) \mathrm{d}x \leq \sum_{i=n_0}^nf(i)
+		\end{equation*}
+		\columnbreak
+		\vfill\null
+		\begin{tikzpicture}
+				[
+					scale=0.8,
+					every circle/.style={radius=.05},
+					sum/.style={pattern=north west lines,pattern color=yellow},
+					declare function={
+						f(\x) = {4.5 / \x};
+					}
+				]
+			\draw [sum] (1,0) rectangle (2,{f(2)});
+			\draw [sum] (2,0) rectangle (3,{f(3)});
+			\draw [sum] (3,0) rectangle (4,{f(4)});
 
 				% \draw [pattern=crosshatch dots, pattern color=purple] (0,0) rectangle (1,{f(1)});
-									\fill [pattern=north east lines, pattern color=purple,domain=1:4,variable=\x]
-									(1,0)
-									-- plot (\x, {f(\x)})
-									-- (4,0)
-									-- cycle;
+				\fill [pattern=north east lines, pattern color=purple,domain=1:4,variable=\x]
+				(1,0)
+				-- plot (\x, {f(\x)})
+				-- (4,0)
+				-- cycle;
 
-									\draw [domain=1:6] plot (\x, {f(\x)});
-									\draw [fill] (1,{f(1)}) circle;
-									\draw [thick,<->]
-									(0,5) node [left] {$y$} --
-									(0,0) --
-									(6,0) node [below] {$x$};
-									\draw [fill] (1,0) node [below] {$\phantom{-1} n_0 \phantom{-1}$} circle;
-									\draw [fill] (3,0) node [below] {$n-1$} circle;
-									\draw [fill] (4,0) node [below] {$\phantom{-1} n \phantom{-1}$} circle;
-									\draw [fill] (5,0) node [below] {$n+1$} circle;
-								\end{tikzpicture}
+			\draw [domain=1:6] plot (\x, {f(\x)});
+			\draw [fill] (1,{f(1)}) circle;
+			\draw [thick,<->]
+				(0,5) node [left] {$y$} --
+				(0,0) --
+				(6,0) node [below] {$x$};
+			\draw [fill] (1,0) node [below] {$\phantom{-1} n_0 \phantom{-1}$} circle;
+			\draw [fill] (3,0) node [below] {$n-1$} circle;
+			\draw [fill] (4,0) node [below] {$\phantom{-1} n \phantom{-1}$} circle;
+			\draw [fill] (5,0) node [below] {$n+1$} circle;
+		\end{tikzpicture}
 			% \caption{$\sum_{i=n_0}^nf(i) \leq f(n_0) + \int_{n_0}^nf(x) \mathrm{d}x $}
-								\begin{equation*}
-									\begin{aligned}
-										\sum_{i=n_0+1}^n f(i) & \leq \int_{n_0}^n f(x) \mathrm{d}x & \Big/ + f(n_0)
-										\\\sum_{i=n_0}^n f(i) & \leq \int_{n_0}^nf(x) \mathrm{d}x + f(n_0) &
-									\end{aligned}
-								\end{equation*}
-							\end{multicols}
-							Stąd:
-							\begin{equation*}
-								\begin{CD}
-									\displaystyle\int_{n_0}^{n+1}f(x) \mathrm{d}x @.
-									\quad \leq \quad @.
-									\displaystyle\sum_{i=n_0}^nf(i) @.
-									\quad \leq \quad @.
-									f(n_0) + @. \underbrace{\int_{n_0}^nf(x) \mathrm{d}x}
-									\\ @VV{n \to \infty}V @. @VV{n \to \infty}V @. @. @VV{n \to \infty}V
-									\\ \displaystyle\int_{n_0}^\infty f(x) \mathrm{d}x @.
-									\quad \leq \quad @.
-									\displaystyle\sum_{i=n_0}^\infty f(i) @.
-									\leq @. f(n_0) +
-									@. \displaystyle\int_{n_0}^\infty f(x) \mathrm{d}x
-								\end{CD}
-							\end{equation*}
+		\begin{equation*}
+			\begin{aligned}
+				\sum_{i=n_0+1}^n f(i) & \leq \int_{n_0}^n f(x) \mathrm{d}x & \Big/ + f(n_0)
+				\\\sum_{i=n_0}^n f(i) & \leq \int_{n_0}^nf(x) \mathrm{d}x + f(n_0) &
+			\end{aligned}
+		\end{equation*}
+	\end{multicols}
+	Stąd:
+	\begin{equation*}
+		\begin{CD}
+			\displaystyle\int_{n_0}^{n+1}f(x) \mathrm{d}x @.
+			\quad \leq \quad @.
+			\displaystyle\sum_{i=n_0}^nf(i) @.
+			\quad \leq \quad @.
+			f(n_0) + @. \underbrace{\int_{n_0}^nf(x) \mathrm{d}x}
+			\\ @VV{n \to \infty}V @. @VV{n \to \infty}V @. @. @VV{n \to \infty}V
+			\\ \displaystyle\int_{n_0}^\infty f(x) \mathrm{d}x @.
+			\quad \leq \quad @.
+			\displaystyle\sum_{i=n_0}^\infty f(i) @.
+			\leq @. f(n_0) +
+			@. \displaystyle\int_{n_0}^\infty f(x) \mathrm{d}x
+		\end{CD}
+	\end{equation*}
 
-							Jeżeli całka po lewej jest rozbieżna ($=\infty$) to szereg musi być rozbieżny.
-							Jeśli szereg jest rozbieżny to całka po prawej musi być rozbieżna.
-						\end{proof}
+	Jeżeli całka po lewej jest rozbieżna ($=\infty$) to szereg musi być rozbieżny.
+	Jeśli szereg jest rozbieżny to całka po prawej musi być rozbieżna.
+\end{proof}
 
-						\subsection{Przykład}
+\subsection{Przykład}
+\begin{gather*}
+	\alpha > 0 ,\quad \displaystyle\sum_{n=1}^\infty \frac{1}{n^\alpha} ,\quad f(x) = \frac{1}{x^\alpha}
+	\\\int_1^\infty \frac{\mathrm{d}x}{x^\alpha}
+	= \left. \frac{x^{1-\alpha}}{1-\alpha} \right|_1^\infty
+	= \left\{
+		\begin{array}{lr}
+			\frac{1}{1-\alpha} & \alpha > 1
+			\\\frac{\infty-1}{1-\alpha} & \alpha < 1
+		\end{array}
+	\right. %}
+\end{gather*}
+Szereg jest zbieżny $\iff \alpha > 1$
 
-						\begin{gather*}
-							\alpha > 0 ,\quad \displaystyle\sum_{n=1}^\infty \frac{1}{n^\alpha} ,\quad f(x) = \frac{1}{x^\alpha}
-							\\\int_1^\infty \frac{\mathrm{d}x}{x^\alpha}
-							= \left. \frac{x^{1-\alpha}}{1-\alpha} \right|_1^\infty
-							= \left\{
-								\begin{array}{lr}
-									\frac{1}{1-\alpha} & \alpha > 1
-									\\\frac{\infty-1}{1-\alpha} & \alpha < 1
-								\end{array}
-								\right.
-							\end{gather*}
-							Szereg jest zbieżny $\iff \alpha > 1$
+\section{Podać wzór na długość krzywej zadanej parametrycznie.}
+Niech $-\infty < a < b < \infty$ oraz $f_1, f_2, \dots, f_n \colon [a,b] \to \mathbb{R}$ będą funkcjami ciągłymi klasy $C^1$. Krzywą nazywamy zbiór punktów ${\gamma = \{ (x_1, x_2, \dots, x_n) \in \mathbb{R}^n \colon x_1 = f_1 (t), x_2 = f_2 (t), \dots, x_n = f_n (t), t \in [a,b] \} }$.
 
+Wówczas długość krzywej wyraża się wzorem:
+\begin{equation*}
+	| \gamma | = \int_a^b \sqrt{x_1^\prime(t)^2 + x_2^\prime(t)^2 + \dots + x_n^\prime(t)^2} \mathrm{d}t
+\end{equation*}
 
-							\section{Podać wzór na długość krzywej zadanej parametrycznie.}
-							Niech $-\infty < a < b < \infty$ oraz
-							$f_1, f_2, \dots, f_n \colon [a,b] \to \mathbb{R}$ będą funkcjami ciągłymi klasy $C^1$.
-							Krzywą nazywamy zbiór punktów
-							${\gamma = \{ (x_1, x_2, \dots, x_n) \in \mathbb{R}^n \colon 
-						x_1 = f_1 (t), x_2 = f_2 (t), \dots, x_n = f_n (t), t \in [a,b] \} }$.
+W szczególności, dla $n=2$, $x_1=t$, $x_2=f(t)$:
+\begin{equation*}
+	| \gamma | = \int_a^b \sqrt{1 + f ^\prime (t) ^2} \mathrm{d}t
+\end{equation*}
 
-						Wówczas długość krzywej wyraża się wzorem:
-						\begin{equation*}
-							| \gamma | = \int_a^b \sqrt{x_1^\prime(t)^2 + x_2^\prime(t)^2 + \dots + x_n^\prime(t)^2} \mathrm{d}t
-						\end{equation*}
+\section{Podać wzór na objętość i pole powierzchni bryły obrotowej.}
+\begin{multicols}{2}
+	$V$ - bryła powstała przez obrót wykresu $y=f(x)$ wokół osi Ox. $f \colon [a,b] \to [0,\infty)$. %]
+	\begin{equation*}
+		\textnormal{objętość: \enskip}
+		| V | = \pi \int_a^b f(x)^2 \mathrm{d}x
+	\end{equation*}
+	\begin{equation*}
+		\textnormal{pole} (V) = 2\pi \int_a^b \sqrt{1 + f^\prime(x)^2} \mathrm{d}x
+	\end{equation*}
+	\centering
+	\def\svgwidth{20em}
+	\input{obrot_bryly.pdf_tex}
+\end{multicols}
 
-						W szczególności, dla $n=2$, $x_1=t$, $x_2=f(t)$:
-						\begin{equation*}
-							| \gamma | = \int_a^b \sqrt{1 + f ^\prime (t) ^2} \mathrm{d}t
-						\end{equation*}
-
-						\section{Podać wzór na objętość i pole powierzchni bryły obrotowej.}
-% \pagedepth\maxdimen
-						\begin{wrapfigure}{R}{20em+2em}
-							\def\svgwidth{20em}
-							\input{obrot_bryly.pdf_tex}
-						\end{wrapfigure}
-						$V$ - bryła powstała przez obrót wykresu $y=f(x)$ wokół osi Ox. $f \colon [a,b] \to [0,\infty)$.
-							\begin{equation*}
-								\textnormal{objętość: \enskip}
-								| V | = \pi \int_a^b f(x)^2 \mathrm{d}x
-							\end{equation*}
-							\begin{equation*}
-								\textnormal{pole} (V) = 2\pi \int_a^b \sqrt{1 + f^\prime(x)^2} \mathrm{d}x
-							\end{equation*}
-
-							\end{document}
+\end{document}
