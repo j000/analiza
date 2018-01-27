@@ -422,6 +422,147 @@ Funkcję $f(x) = \frac{ax+b}{cx+d}$, gdzie $a,b,c,d \in \mathbb{C}$ i $ad-bc \ne
 
 Jeżeli funkcje $g(x)$ i $h(x) \neq 0$ są wielomianami, to funkcję $f(x)=\frac{g(x)}{h(x)}$ nazywa się funkcją wymierną.
 
+\section{Wykazać, że odwzorowaniem odwrotnym do homografii jest homografia.}
+$f \colon \mathbb{C} \to \mathbb{C}$, $a,b,c,d \in \mathbb{C}$, $ad-bc \neq 0$, $f(z) = \frac{az+b}{cz+d}$
+\begin{align*}
+	x &= \frac{az+b}{cz+d}
+	\\ xcz+xd &= b-xd
+	\\ zxc-az &= b-xd
+	\\ z(xc-a) &= b-xd
+	\\ z &= \frac{b-xd}{xc-a}
+	\\ z &= \frac{-xd+b}{xc-a}
+	\\ &\Downarrow
+	\\ f^{-1}(z) &= \frac{-dz+b}{cz-a}
+\end{align*}
+
+\section{Podać zasadę indukcji matematycznej.}
+Jeżeli:
+\begin{enumerate}
+	\item Istnieje taka liczba naturalna $n_0$, że $T(n_0)$ jest zdaniem prawdziwym
+	\item Dla każdej liczby naturalnej $n>n_0$ prawdziwa jest implikacja $T(n) \implies T(n+1)$
+\end{enumerate}
+to $T(n)$ jest zdaniem prawdziwym dla każdej liczby naturalnej $n \geq n_0$.
+
+\section{Podać i udowodnić (indukcyjnie) nierówność Bernoulliego.}
+\begin{multicols}{2}
+	Jeśli $x \geq -1$:
+	\begin{equation*}
+		\begin{cases}
+			(1+x)^\alpha \leq 1 + \alpha x & \textnormal{dla\:} 0 < \alpha \leq 1
+			\\ (1+x)^\alpha \geq 1 + \alpha x & \textnormal{dla\:} \alpha \geq 1
+		\end{cases}
+	\end{equation*}
+	\vspace*{\fill}
+
+	Równość zachodzi dla $\alpha = 1$.
+\end{multicols}
+\begin{proof}
+	\begin{enumerate}
+		\item
+			Dla $\alpha = 1$:
+			\begin{equation*}
+				(1+x)^1 = 1+x = 1 + 1x
+			\end{equation*}
+		\item
+			Istnieje $k \geq 1$ takie, że
+			\begin{equation}
+				\label{eq.ber}
+				(1+x)^k \geq 1 + kx
+			\end{equation}
+		\item
+			% \begin{equation*}
+			% 	(1+x)^{k+1} \geq 1+(k+1)x
+			% \end{equation*}
+			\begin{align*}
+				(1+x)^{k+1}
+				   &= (1+x)^k (1+x)
+				\\ &\geq (1+kx)(1+x) &\textnormal{\quad z założenia (wzór \ref{eq.ber})}
+				\\ &= 1+x+kx+kx^2
+				\\ &= 1+(1+k)x+kx^2
+				\\ &\geq 1+(1+k)x &\textnormal{\quad $k\geq 1$, więc $kx^2\geq 0$}
+			\end{align*}
+	\end{enumerate}
+\end{proof}
+
+\section{Podać i udowodnić wzór dwumianowy Newtona.}
+\begin{multicols}{2}
+	\begin{equation*}
+		(x+y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k}y^k
+	\end{equation*}
+	\vspace*{\fill}
+
+	Przykład: $(x+y)^2=x^2+2xy+y^2$
+\end{multicols}
+\begin{proof}
+	\begin{enumerate}
+		\item
+			$n=1$:
+			\begin{equation*}
+				(x+y)^1=x+y=\binom{1}{0}xy^0+\binom{1}{1}x^0y=\sum_{k=0}^1\binom{1}{k}x^{1-k}y^k
+			\end{equation*}
+		\item
+			\begin{equation}
+				\label{eq.dwumian}
+				(x+y)^n=\sum_{k=0}^n\binom{n}{k}x^{n-k}y^k
+			\end{equation}
+		\item
+			% \begin{equation*}
+			% 	(x+y)^{n+1}=\sum_{k=0}^{n+1}\binom{n+1}{k}x^{n+1-k}y^k
+			% \end{equation*}
+			\begin{align*}
+				(x+y)^{n+1} &=
+				(x+y)(x+y)^n
+				\\ &= (x+y)\sum_{k=0}^n\binom{n}{k}x^{n-k}y^k &\textnormal{\quad z założenia (wzór \ref{eq.dwumian})}
+				\\ &= \sum_{k=0}^n\binom{n}{k}x^{n-k+1}y^k + \sum_{k=0}^n\binom{n}{k}x^{n-k}y^{k+1}
+				\\ &= \binom{n}{0}x^{n+1}y^0
+				+ \sum_{k=1}^n \left(\binom{n}{k}+\binom{n}{k-n}\right)x^{n-k+1}y^k
+				+ \binom{n}{n}x^0y^{n+1}
+				\\ &= \binom{n+1}{0}x^{n+1}
+				+ \sum_{k=1}^n\binom{n+1}{k}x^{(n+1)-k}y^k
+				+ \binom{n+1}{n+1}y^{n+1}
+				\\ &= \sum_{k=0}^{n+1}\binom{n+1}{k}x^{(n+1)-k}y^k
+			\end{align*}
+	\end{enumerate}
+\end{proof}
+
+\section{Co to jest trójkąt Pascala i do czego służy? Wykazać, że
+	\texorpdfstring
+	{${\binom{n}{t}+\binom{n}{t-1}=\binom{n+1}{t}}$.}
+		{(n t)+(n t-1)=(n+1 t).}
+	}
+Trójkąt Pascala - trójkątna tablica liczb.
+\begin{multicols}{2}
+	TODO: narysuj
+	\\
+	Liczby znajdujące się w n-tym wierszu to kolejne współczynniki dwumianu Newtona. Służy do obrazowania liczby dróg którymi można dość od wierzchołka do danego punku (rachunek prawdopodobieństwa).
+\end{multicols}
+\begin{proof}
+	\begin{align*}
+		\binom{n}{t}+\binom{n}{t-1}
+		&= \frac{n!}{t!(n-t)!}+\frac{n!}{(t-1)!(n-t+1)!}
+		\\ &= \frac{n!}{t(t-1)!(n-t)!}+\frac{n!}{(t-1)!(n-t)!(n-t+1)}
+		\\ &= \frac{n!(n-t+1)+n!t}{t(t-1)!(n-1)!(n-t+1)}
+		\\ &= \frac{n!(n-t+1+t)}{t!(n-t+1)!}
+		\\ &= \frac{(n+1)!}{t!((n+1)-t)!}
+		\\ &= \binom{n+1}{t}
+	\end{align*}
+\end{proof}
+
+\section{Podać aksjomat ciągłości dla zbioru liczb rzeczywistych. Co to jest kres dolny, górny podzbioru liczb rzeczywistych?}
+Aksjomat ciągłości postuluje, że każdy niepusty i ograniczony z góry podzbiór zbioru liczb rzeczywistych ma kres górny.
+
+Kres górny/dolny - najmniejsze z ograniczeń górnych/największe z ograniczeń dolnych danego zbioru, o ile ograniczenia istnieją.
+\\Niech $A \subseteq \mathbb{R}$. Liczbę $\beta \in \mathbb{R}$ nazywamy kresem górnym zbioru $A$, jeżeli $\beta$ jest największą liczbą zbioru $A$ lub $\beta$ jest najmniejszą spośród liczb ograniczających z góry. Analogicznie kres dolny.
+
+\section{Podać definicję ciągu. Co to jest ciąg zbieżny, rozbieżny do \texorpdfstring{$+\infty$,$-\infty$}{+inf,-inf}?}
+Ciągiem nazywamy funkcję, której dziedziną jest zbiór liczb naturalnych $\mathbb{N}$ lub jego skończony odcinek początkowy ($\{1,2,3,\dots,n\}$). W 1. przypadku jest to ciąg nieskończony, w 2. - ciąg skończony n-elementowy.
+
+Ciąg zbieżny - ciąg, który posiada granicę: $\lim\limits_{n\to \infty}a_n=g\in \mathbb{R}$.
+$\forall \epsilon > 0 \exists n \in \mathbb{N} \colon \abs{a_n-g}<\epsilon$ (tzn. $a_n \in (g-\epsilon,g+\epsilon)$).
+
+Ciąg rozbieżny:
+$\lim\limits_{n \to \infty}a_n = {+ \atop -} \infty \iff \forall M \in \mathbb{R} \exists N \in \mathbb{N} \forall n > N \colon a_n {> \atop <} M$.
+
 \setcounter{section}{63}
 \section{Podać i udowodnić zasadnicze twierdzenie rachunku całkowego,
 które pozwala obliczyć całkę Riemanna za pomocą funkcji pierwotnej.}
