@@ -409,33 +409,32 @@ jest jej dowolną funkcją pierwotną, to zachodzi równość:
 \begin{proof}
 	Zdefiniujmy funkcję $F$ dla każdego ${x \in [a,b]}$:
 	\begin{equation*}
-		F(x) = \textstyle \int_a^x f(t) \mathrm{d}t
+		g(x) = \textstyle \int_a^x f(t) \mathrm{d}t
 	\end{equation*}
 
 	Skoro funkcja $f$ jest ciągła, to na mocy twierdzenia o funkcji
-	górnej granicy całkowania funkcja $F$ jest różniczkowalna
-	i zachodzi równość ${F^\prime(x)=f(x)}$ we wszystkich punktach ${x \in (a,b)}$.
-	Oznacza to, że $F$ jest funkcją pierwotną funkcji $f$.
+	górnej granicy całkowania funkcja $g$ jest różniczkowalna
+	i zachodzi równość ${g^\prime(x)=f(x)}$ we wszystkich punktach ${x \in (a,b)}$.
+	Oznacza to, że $g$ jest funkcją pierwotną funkcji $f$.
 	Ponieważ każde dwie funkcje pierwotne danej funkcji różnią się o stałą,
 	to dla pewnej liczby rzeczywistej C oraz dowolnego ${x \in [a,b]}$
 	zachodzi równość
 	\begin{equation}
-		\label{eq.1}
-		g(x)=F(x)+C
+		\label{eq.cal1}
+		F(x)=g(x)+C
 	\end{equation}
-	Z definicji funkcji $F$ wynika, że
+	Z definicji funkcji $g$ wynika, że
 	\begin{equation}
-		\label{eq.2}
-		\textstyle \int_a^b f(t) \mathrm{d}t = F(b)
+		\label{eq.cal2}
+		\textstyle \int_a^b f(t) \mathrm{d}t = g(b)
 	\end{equation}
-	A skoro
-	\begin{equation}
-		\label{eq.3}
-		F(a) = \textstyle \int_a^a f(t) \mathrm{d}t=0
-	\end{equation}
+	A skoro $g(a) = \textstyle \int_a^a f(t) \mathrm{d}t=0$,
 	to możemy kontynuować obliczenia, zapisując
-	${F(b)=F(b)-F(a)=(F(b)+C)-(F(a)+C)=g(b)-g(a)}$,
-	gdzie ostatnia równość wynika z \eqref{eq.1}. Połączenie \eqref{eq.2} z \eqref{eq.3} implikuje żądany wzór i kończy dowód twierdzenia.
+	\begin{equation}
+		\label{eq.cal3}
+		g(b)=g(b)-g(a)=(g(b)+C)-(g(a)+C)=F(b)-F(a)
+	\end{equation}
+	gdzie ostatnia równość wynika z \eqref{eq.cal1}. Połączenie \eqref{eq.cal2} z \eqref{eq.cal3} implikuje żądany wzór i kończy dowód twierdzenia.
 \end{proof}
 
 \section{Co to jest całka niewłaściwa w sensie Riemanna?}
