@@ -16,11 +16,8 @@ analiza.pdf: %.pdf: %.tex
 
 .PHONY: mostly-clean
 mostly-clean:
-	@-$(RM) -f *.log
-	@-$(RM) -f *.aux
-	@-$(RM) -f *.out
-	@-$(RM) -f *.toc
+	@-$(RM) -f analiza.log analiza.aux analiza.out analiza.toc
 
 .PHONY: clean
 clean: mostly-clean
-	@-$(RM) -f *.pdf
+	@-$(RM) -f analiza.pdf obrot_bryly.pdf_tex obrot_bryly.pdf
