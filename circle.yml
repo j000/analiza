@@ -1,0 +1,8 @@
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: j000/docker-texlive:latest
+    steps:
+      - checkout
+      - run: echo "hello world"
