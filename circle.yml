@@ -5,4 +5,5 @@ jobs:
       - image: j000/docker-texlive:latest
     steps:
       - checkout
-      - run: echo "hello world"
+      - run: pdf --version
+      - run: make
