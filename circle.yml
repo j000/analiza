@@ -5,5 +5,5 @@ jobs:
       - image: j000/docker-texlive:latest
     steps:
       - checkout
-      - run: pdf --version
+      - run: pdflatex --version
       - run: make
