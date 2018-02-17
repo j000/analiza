@@ -3,7 +3,7 @@ SHELL := /bin/sh
 .PHONY: all
 all: analiza.pdf mostly-clean
 
-analiza.pdf: obrot_bryly.pdf_tex
+analiza.pdf: obrot_bryly.pdf_tex obrot_bryly.pdf
 
 analiza.pdf: %.pdf: %.tex
 # run twice for hyperref
