@@ -4,7 +4,6 @@ jobs:
     docker:
       - image: j000/docker-texlive:latest
     steps:
-      - checkout
       - run: pdflatex --version
-      - run: apk add --no-cache inkscape
+      - checkout
       - run: make
