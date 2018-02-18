@@ -2,7 +2,7 @@ version: 2.0
 jobs:
   build:
     docker:
-      - image: j000/docker-texlive:latest
+      - image: j000/docker-texlive:opensuse
     steps:
       - run: pdflatex --version
       - checkout
