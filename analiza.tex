@@ -164,6 +164,7 @@
 \pagenumbering{Alph}
 \begin{titlepage}
 	\vspace*{\fill}
+	\addvspace{3cm}
 	\begin{center}
 		\makeatletter
 		\huge
@@ -171,6 +172,7 @@
 		\makeatother
 	\end{center}
 	\vspace*{\fill}
+	\addvspace{3cm}
 	\tableofcontents{
 		\thispagestyle{empty}
 	}
@@ -183,6 +185,7 @@
 
 \section{Co to jest funkcja? dziedzina funkcji? zbiór wartości funkcji?}
 Niech $X$, $Y$ będą zbiorami niepustymi.
+
 \subsection{Funkcja}
 Funkcją przekształcającą zbiór $X$ w zbiór $Y$ nazywamy dowolny podzbiór $f \subseteq X \times Y$ taki, że dla każdego $x \in X$ istnieje dokładnie jeden $y \in Y$, dla którego $(x,y)\in f$.
 Oznaczamy to jako $f \colon X \to Y$. Funkcję nazywamy również przekształceniem lub przyporządkowaniem.
@@ -210,6 +213,7 @@ Przykład: $y=a^x$ - odwrotna: $y = \log_a{x}$
 
 \section{Co nazywamy obrazem, przeciwobrazem zbioru przez funkcję? Podać ich własności.}
 Niech $f \colon X \to Y$.
+
 \subsection{Obraz}
 Obrazem zbioru $A \subseteq X$ nazywamy zbiór ${f(A) = \{y \in Y \colon \exists x \in A \colon y=f(x)\}}$.
 \\Własności ($A, B \subseteq X$):
@@ -232,14 +236,18 @@ Przeciwobrazem zbioru $C \subseteq Y$ nazywamy zbiór: ${f^{-1}(C) = \{ x \in X 
 \end{itemize}
 
 \section{Co to jest iniekcja, suriekcja, bijekcja?}
-Iniekcja: ${\forall x,y \in X \colon x \neq y \implies f(x) \neq f(y)}$ (Równoważnie: $f(x) = f(y) \iff x = y$)
+\subsection{Iniekcja}
+${\forall x,y \in X \colon x \neq y \implies f(x) \neq f(y)}$ (Równoważnie: $f(x) = f(y) \iff x = y$)
 
-Suriekcja: ${\forall y \in Y \exists x \in X \colon f(x)=y}$
+\subsection{Suriekcja}
+${\forall y \in Y \exists x \in X \colon f(x)=y}$
 
-Bijekcja: funkcja jest iniekcją i suriekcją.
+\subsection{Bijekcja}
+Funkcja jest iniekcją i suriekcją.
 
 \section{Naszkicować wykresy funkcji wykładniczych i logarytmicznych.}
 \begin{multicols}{2}
+	\raggedcolumns
 	\centering
 
 	\begin{tikzpicture}
@@ -257,6 +265,7 @@ Bijekcja: funkcja jest iniekcją i suriekcją.
 			(0,0) -- (0,r) node [right] {$y$};
 	\end{tikzpicture}
 	\\$y=a^x$, $a>1$
+	\columnbreak
 
 	\begin{tikzpicture}
 			[
@@ -276,6 +285,7 @@ Bijekcja: funkcja jest iniekcją i suriekcją.
 \end{multicols}
 
 \begin{multicols}{2}
+	\raggedcolumns
 	\centering
 
 	\begin{tikzpicture}
@@ -293,6 +303,7 @@ Bijekcja: funkcja jest iniekcją i suriekcją.
 			(0,-r) -- (0,r) node [right] {$y$};
 	\end{tikzpicture}
 	\\$y=\log_a(x)$, $a>1$
+	\columnbreak
 
 	\begin{tikzpicture}
 			[
@@ -313,6 +324,7 @@ Bijekcja: funkcja jest iniekcją i suriekcją.
 
 \section{Naszkicować wykresy funkcji trygonometrycznych i cyklometrycznych.}
 \begin{multicols}{2}
+	\raggedcolumns
 	\centering
 	\begin{tikzpicture}
 			[
@@ -429,8 +441,10 @@ Bijekcja: funkcja jest iniekcją i suriekcją.
 \end{multicols}
 
 \section{Co to jest homografia? Funkcja wymierna?}
+\subsection{Funkcja homograficzna}
 Funkcję $f(x) = \frac{ax+b}{cx+d}$, gdzie $a,b,c,d \in \C$ i $ad-bc \neq 0$, nazywamy funkcją homograficzną. Szczególnym przypadkiem homografii jest funkcja w postaci $f(x) = \frac{a}{x}$.
 
+\subsection{Funkcja wymierna}
 Jeżeli funkcje $g(x)$ i $h(x) \neq 0$ są wielomianami, to funkcję $f(x)=\frac{g(x)}{h(x)}$ nazywa się funkcją wymierną.
 
 \section{Wykazać, że odwzorowaniem odwrotnym do homografii jest homografia.}
@@ -481,9 +495,6 @@ to $T(n)$ jest zdaniem prawdziwym dla każdej liczby naturalnej $n \geq n_0$.
 				(1+x)^k \geq 1 + kx
 			\end{equation}
 		\item
-			% \begin{equation*}
-			% 	(1+x)^{k+1} \geq 1+(k+1)x
-			% \end{equation*}
 			\begin{align*}
 				(1+x)^{k+1}
 				   &= (1+x)^k (1+x)
@@ -517,9 +528,6 @@ to $T(n)$ jest zdaniem prawdziwym dla każdej liczby naturalnej $n \geq n_0$.
 				(x+y)^n=\sum_{k=0}^n\binom{n}{k}x^{n-k}y^k
 			\end{equation}
 		\item
-			% \begin{equation*}
-			% 	(x+y)^{n+1}=\sum_{k=0}^{n+1}\binom{n+1}{k}x^{n+1-k}y^k
-			% \end{equation*}
 			\begin{align*}
 				(x+y)^{n+1} &=
 				(x+y)(x+y)^n
@@ -575,11 +583,14 @@ Kres górny/dolny - najmniejsze z ograniczeń górnych/największe z ograniczeń
 \\Niech $A \subseteq \R$. Liczbę $\beta \in \R$ nazywamy kresem górnym zbioru $A$, jeżeli $\beta$ jest największą liczbą zbioru $A$ lub $\beta$ jest najmniejszą spośród liczb ograniczających z góry. Analogicznie kres dolny.
 
 \section{Podać definicję ciągu. Co to jest ciąg zbieżny, rozbieżny do \texorpdfstring{$+\infty$,$-\infty$}{+inf,-inf}?}
+\subsection{Ciąg}
 Ciągiem nazywamy funkcję, której dziedziną jest zbiór liczb naturalnych $\N$ lub jego skończony odcinek początkowy ($\{1,2,3,\dots,n\}$). W 1. przypadku jest to ciąg nieskończony, w 2. - ciąg skończony n-elementowy.
 
+\subsection{Ciąg zbieżny}
 Ciąg zbieżny - ciąg, który posiada granicę: $\lim\limits_{n\to \infty}a_n=g\in \R$.
 $\forall \epsilon > 0 \exists n \in \N \colon \abs{a_n-g}<\epsilon$ (tzn. $a_n \in (g-\epsilon,g+\epsilon)$).
 
+\subsection{Ciąg rozbieżny}
 Ciąg rozbieżny:
 $\lim\limits_{n \to \infty}a_n = \atop{+}{-} \infty \iff \forall M \in \R \exists N \in \N \forall n > N \colon a_n \atop{>}{<} M$.
 
@@ -747,10 +758,7 @@ A zatem
 	\right. %}
 \end{equation*}
 
-\section{Podać i udowodnić kryterium całkowe zbieżności szeregu.
-	Zastosować to kryterium do szeregu harmonicznego z wykładnikiem
-	\texorpdfstring{$ \alpha $}{a}.
-}
+\section{Podać i udowodnić kryterium całkowe zbieżności szeregu. Zastosować to kryterium do szeregu harmonicznego z wykładnikiem \texorpdfstring{$ \alpha $}{a}.}
 \subsection{Teoria}
 Niech $f \colon [n_0,\infty) \to \R$, $f(n)$ jest nierosnąca i nieujemna dla $n> n_0$. %]
 [Analogicznie dla niemalejącej i niedodatniej.]
@@ -760,7 +768,7 @@ Niech $f \colon [n_0,\infty) \to \R$, $f(n)$ jest nierosnąca i nieujemna dla $n
 	\iff
 	\int_{n_0}^\infty f(n) \mathrm{d}n \textnormal{ \enskip jest zbieżna}
 \end{equation*}
-\begin{proof}%{\textit{(z wykładu)}}
+\begin{proof}
 	Weźmy $a_n \coloneqq \int_n^{n+1} f(x) \mathrm{d}x$ ($n \geq n_0$, $n \in \N$).
 	Zauważmy, że $f(n)$ jest równe polu prostokąta o bokach $1$~i~$f(n)$.
 	Mamy:
@@ -769,82 +777,86 @@ Niech $f \colon [n_0,\infty) \to \R$, $f(n)$ jest nierosnąca i nieujemna dla $n
 	.
 	\begin{multicols}{2}
 		\centering
-								% rysunki do dowodu
-		\begin{tikzpicture}
-				[
-					scale=0.8,
-					every circle/.style={radius=.05},
-					sum/.style={pattern=north west lines,pattern color=yellow},
-					declare function={
-						f(\x) = {4.5 / \x};
-					}
-				]
-			\draw [sum] (2,0) rectangle (1,{f(1)});
-			\draw [sum] (3,0) rectangle (2,{f(2)});
-			\draw [sum] (4,0) rectangle (3,{f(3)});
-			\draw [sum] (5,0) rectangle (4,{f(4)});
+		% rysunki do dowodu
+		\begin{samepage}
+			\begin{tikzpicture}
+					[
+						scale=0.8,
+						every circle/.style={radius=.05},
+						sum/.style={pattern=north west lines,pattern color=yellow},
+						declare function={
+							f(\x) = {4.5 / \x};
+						}
+					]
+				\draw [sum] (2,0) rectangle (1,{f(1)});
+				\draw [sum] (3,0) rectangle (2,{f(2)});
+				\draw [sum] (4,0) rectangle (3,{f(3)});
+				\draw [sum] (5,0) rectangle (4,{f(4)});
 
-				\fill [pattern=north east lines, pattern color=purple,domain=1:5,variable=\x]
-				(1,0)
-				-- plot (\x, {f(\x)})
-				-- (5,0)
-				-- cycle;
+					\fill [pattern=north east lines, pattern color=purple,domain=1:5,variable=\x]
+					(1,0)
+					-- plot (\x, {f(\x)})
+					-- (5,0)
+					-- cycle;
 
-			\draw [domain=1:6] plot (\x, {f(\x)});
-			\draw [fill] (1,{f(1)}) circle;
-			\draw [thick,<->]
-				(0,5) node [left] {$y$} --
-				(0,0) --
-				(6,0) node [below] {$x$};
-			\draw [fill] (1,0) node [below] {$\phantom{-1} n_0 \phantom{-1}$} circle;
-			\draw [fill] (3,0) node [below] {$n-1$} circle;
-			\draw [fill] (4,0) node [below] {$\phantom{-1}n\phantom{-1}$} circle;
-			\draw [fill] (5,0) node [below] {$n+1$} circle;
-		\end{tikzpicture}
+				\draw [domain=1:6] plot (\x, {f(\x)});
+				\draw [fill] (1,{f(1)}) circle;
+				\draw [thick,<->]
+					(0,5) node [left] {$y$} --
+					(0,0) --
+					(6,0) node [below] {$x$};
+				\draw [fill] (1,0) node [below] {$\phantom{-1} n_0 \phantom{-1}$} circle;
+				\draw [fill] (3,0) node [below] {$n-1$} circle;
+				\draw [fill] (4,0) node [below] {$\phantom{-1}n\phantom{-1}$} circle;
+				\draw [fill] (5,0) node [below] {$n+1$} circle;
+			\end{tikzpicture}
 			% \caption{$\int_{n_0}^{n+1}f(x) \mathrm{d}x \leq \sum_{i=n_0}^nf(i)$}
-		\begin{equation*}
-			\int_{n_0}^{n+1}f(x) \mathrm{d}x \leq \sum_{i=n_0}^nf(i)
-		\end{equation*}
-		\columnbreak
-		\vfill\null
-		\begin{tikzpicture}
-				[
-					scale=0.8,
-					every circle/.style={radius=.05},
-					sum/.style={pattern=north west lines,pattern color=yellow},
-					declare function={
-						f(\x) = {4.5 / \x};
-					}
-				]
-			\draw [sum] (1,0) rectangle (2,{f(2)});
-			\draw [sum] (2,0) rectangle (3,{f(3)});
-			\draw [sum] (3,0) rectangle (4,{f(4)});
+			\begin{equation*}
+				\int_{n_0}^{n+1}f(x) \mathrm{d}x \leq \sum_{i=n_0}^nf(i)
+			\end{equation*}
+		\end{samepage}
+		% \columnbreak
 
-				% \draw [pattern=crosshatch dots, pattern color=purple] (0,0) rectangle (1,{f(1)});
-				\fill [pattern=north east lines, pattern color=purple,domain=1:4,variable=\x]
-				(1,0)
-				-- plot (\x, {f(\x)})
-				-- (4,0)
-				-- cycle;
+		\begin{samepage}
+			\begin{tikzpicture}
+					[
+						scale=0.8,
+						every circle/.style={radius=.05},
+						sum/.style={pattern=north west lines,pattern color=yellow},
+						declare function={
+							f(\x) = {4.5 / \x};
+						}
+					]
+				\draw [sum] (1,0) rectangle (2,{f(2)});
+				\draw [sum] (2,0) rectangle (3,{f(3)});
+				\draw [sum] (3,0) rectangle (4,{f(4)});
 
-			\draw [domain=1:6] plot (\x, {f(\x)});
-			\draw [fill] (1,{f(1)}) circle;
-			\draw [thick,<->]
-				(0,5) node [left] {$y$} --
-				(0,0) --
-				(6,0) node [below] {$x$};
-			\draw [fill] (1,0) node [below] {$\phantom{-1} n_0 \phantom{-1}$} circle;
-			\draw [fill] (3,0) node [below] {$n-1$} circle;
-			\draw [fill] (4,0) node [below] {$\phantom{-1} n \phantom{-1}$} circle;
-			\draw [fill] (5,0) node [below] {$n+1$} circle;
-		\end{tikzpicture}
+					% \draw [pattern=crosshatch dots, pattern color=purple] (0,0) rectangle (1,{f(1)});
+					\fill [pattern=north east lines, pattern color=purple,domain=1:4,variable=\x]
+					(1,0)
+					-- plot (\x, {f(\x)})
+					-- (4,0)
+					-- cycle;
+
+				\draw [domain=1:6] plot (\x, {f(\x)});
+				\draw [fill] (1,{f(1)}) circle;
+				\draw [thick,<->]
+					(0,5) node [left] {$y$} --
+					(0,0) --
+					(6,0) node [below] {$x$};
+				\draw [fill] (1,0) node [below] {$\phantom{-1} n_0 \phantom{-1}$} circle;
+				\draw [fill] (3,0) node [below] {$n-1$} circle;
+				\draw [fill] (4,0) node [below] {$\phantom{-1} n \phantom{-1}$} circle;
+				\draw [fill] (5,0) node [below] {$n+1$} circle;
+			\end{tikzpicture}
 			% \caption{$\sum_{i=n_0}^nf(i) \leq f(n_0) + \int_{n_0}^nf(x) \mathrm{d}x $}
-		\begin{equation*}
-			\begin{aligned}
-				\sum_{i=n_0+1}^n f(i) & \leq \int_{n_0}^n f(x) \mathrm{d}x & \Big/ + f(n_0)
-				\\\sum_{i=n_0}^n f(i) & \leq \int_{n_0}^nf(x) \mathrm{d}x + f(n_0) &
-			\end{aligned}
-		\end{equation*}
+			\begin{equation*}
+				\begin{aligned}
+					\sum_{i=n_0+1}^n f(i) & \leq \int_{n_0}^n f(x) \mathrm{d}x & \Big/ + f(n_0)
+					\\\sum_{i=n_0}^n f(i) & \leq \int_{n_0}^nf(x) \mathrm{d}x + f(n_0) &
+				\end{aligned}
+			\end{equation*}
+		\end{samepage}
 	\end{multicols}
 	Stąd:
 	\begin{equation*}
