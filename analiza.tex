@@ -68,10 +68,10 @@
 \cfoot{\footnotesize Strona \thepage \hspace{1pt} z \pageref{LastPage}}
 
 % dotted lines in ToC
-\usepackage{tocloft} % for dots in ToC
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-\renewcommand{\cftsecaftersnum}{.}
-\renewcommand{\cftsecnumwidth}{1.75em}
+\usepackage[titles]{tocloft} % for dots in ToC
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % dotted line
+\renewcommand{\cftsecaftersnum}{.} % Dots adter numbers
+\renewcommand{\cftsecnumwidth}{1.75em} % wider space for numbers
 
 % dots in bookmarks
 \usepackage{bookmark}
