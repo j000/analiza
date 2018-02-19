@@ -539,13 +539,22 @@ to $T(n)$ jest zdaniem prawdziwym dla każdej liczby naturalnej $n \geq n_0$.
 \section{Co to jest trójkąt Pascala i do czego służy? Wykazać, że
 	\texorpdfstring
 	{${\binom{n}{t}+\binom{n}{t-1}=\binom{n+1}{t}}$.}
-		{(n t)+(n t-1)=(n+1 t).}
-	}
-Trójkąt Pascala - trójkątna tablica liczb.
+	{(n t)+(n t-1)=(n+1 t).}
+}
 \begin{multicols}{2}
-	TODO: narysuj
-	\\
-	Liczby znajdujące się w n-tym wierszu to kolejne współczynniki dwumianu Newtona. Służy do obrazowania liczby dróg którymi można dość od wierzchołka do danego punku (rachunek prawdopodobieństwa).
+	\raggedcolumns
+	Trójkąt Pascala - trójkątna tablica liczb.
+
+	Liczby znajdujące się w n-tym wierszu to kolejne współczynniki dwumianu Newtona. Służy do obrazowania liczby dróg którymi można dość od wierzchołka do danego punktu (rachunek prawdopodobieństwa).
+
+	\centering
+	\begin{tikzpicture}
+			\foreach \n in {0,...,4} {
+				\foreach \k in {0,...,\n} {
+					\node at (\k-\n/2,-\n) {$\binom{\n}{\k}$};
+				}
+			}
+	\end{tikzpicture}
 \end{multicols}
 \begin{proof}
 	\begin{align*}
