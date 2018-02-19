@@ -20,8 +20,6 @@
 \usepackage{indentfirst}
 % better math
 \usepackage{amsmath}
-% math font
-\usepackage{amsfonts}
 % math stuff
 \usepackage{mathtools}
 \usepackage{amscd}
@@ -31,7 +29,9 @@
 \numberwithin{equation}{section}
 
 %different font
-\usepackage{concmath}
+\usepackage[p]{newtxtext}
+\usepackage[slantedGreek,smallerops,upint,cmbraces]{newtxmath}
+\renewcommand{\familydefault}{\sfdefault}
 
 % for images
 \usepackage{graphicx}
@@ -164,7 +164,7 @@
 	\vspace*{\fill}
 	\begin{center}
 		\makeatletter
-		\LARGE
+		\huge
 		\@title
 		\makeatother
 	\end{center}
