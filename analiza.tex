@@ -322,20 +322,20 @@ Bijekcja: funkcja jest iniekcją i suriekcją.
 				}
 			]
 		\draw [
-			%blue,
-				domain={-0.5*pi}:{r*pi},
-				samples=100
+				%blue,
+				domain={-0.1*pi}:{r*pi},
+				samples=50
 			]
 			plot (\x, {sin(deg(\x))})
-			node [right] {$y=sin(x)$};
+			node [right] {$y=\sin(x)$};
 		\draw
 			[
-			%green,
-				domain={-0.5*pi}:{r*pi},
-				samples=100
+				%green,
+				domain={-0.1*pi}:{r*pi},
+				samples=50
 			]
 			plot (\x, {cos(deg(\x))})
-			node [right] {$y=cos(x)$};
+			node [right] {$y=\cos(x)$};
 
 		\draw [fill] (0,1) node [right] {$1$} circle;
 		\draw [fill] (0,-1) node [right] {$-1$} circle;
@@ -352,7 +352,7 @@ Bijekcja: funkcja jest iniekcją i suriekcją.
 		\draw [fill] (7*pi/4,0) node [below] {$\frac{7\pi}{4}$} circle;
 
 		\draw [thick,->]
-			(-0.5*pi,0) -- (r*pi,0) node [below] {$x$};
+			(-0.1*pi,0) -- (r*pi,0) node [below] {$x$};
 		\draw [thick,->]
 			(0,-1.5) -- (0,1.5) node [right] {$y$};
 	\end{tikzpicture}
