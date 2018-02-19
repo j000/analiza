@@ -109,6 +109,9 @@
 \newtheorem{case}{Przypadek}
 
 % helpers
+\newcommand*{\R}{\mathbb{R}}
+\newcommand*{\N}{\mathbb{N}}
+\renewcommand*{\C}{\mathbb{C}}
 \renewcommand{\atop}[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
 \let\implies\Rightarrow
 \let\iff\Leftrightarrow
@@ -426,12 +429,12 @@ Bijekcja: funkcja jest iniekcją i suriekcją.
 \end{multicols}
 
 \section{Co to jest homografia? Funkcja wymierna?}
-Funkcję $f(x) = \frac{ax+b}{cx+d}$, gdzie $a,b,c,d \in \mathbb{C}$ i $ad-bc \neq 0$, nazywamy funkcją homograficzną. Szczególnym przypadkiem homografii jest funkcja w postaci $f(x) = \frac{a}{x}$.
+Funkcję $f(x) = \frac{ax+b}{cx+d}$, gdzie $a,b,c,d \in \C$ i $ad-bc \neq 0$, nazywamy funkcją homograficzną. Szczególnym przypadkiem homografii jest funkcja w postaci $f(x) = \frac{a}{x}$.
 
 Jeżeli funkcje $g(x)$ i $h(x) \neq 0$ są wielomianami, to funkcję $f(x)=\frac{g(x)}{h(x)}$ nazywa się funkcją wymierną.
 
 \section{Wykazać, że odwzorowaniem odwrotnym do homografii jest homografia.}
-$f \colon \mathbb{C} \to \mathbb{C}$, $a,b,c,d \in \mathbb{C}$, $ad-bc \neq 0$, $f(z) = \frac{az+b}{cz+d}$
+$f \colon \C \to \C$, $a,b,c,d \in \C$, $ad-bc \neq 0$, $f(z) = \frac{az+b}{cz+d}$
 \begin{align*}
 	x &= \frac{az+b}{cz+d}
 	\\ xcz+xd &= b-xd
@@ -560,21 +563,21 @@ Trójkąt Pascala - trójkątna tablica liczb.
 Aksjomat ciągłości postuluje, że każdy niepusty i ograniczony z góry podzbiór zbioru liczb rzeczywistych ma kres górny.
 
 Kres górny/dolny - najmniejsze z ograniczeń górnych/największe z ograniczeń dolnych danego zbioru, o ile ograniczenia istnieją.
-\\Niech $A \subseteq \mathbb{R}$. Liczbę $\beta \in \mathbb{R}$ nazywamy kresem górnym zbioru $A$, jeżeli $\beta$ jest największą liczbą zbioru $A$ lub $\beta$ jest najmniejszą spośród liczb ograniczających z góry. Analogicznie kres dolny.
+\\Niech $A \subseteq \R$. Liczbę $\beta \in \R$ nazywamy kresem górnym zbioru $A$, jeżeli $\beta$ jest największą liczbą zbioru $A$ lub $\beta$ jest najmniejszą spośród liczb ograniczających z góry. Analogicznie kres dolny.
 
 \section{Podać definicję ciągu. Co to jest ciąg zbieżny, rozbieżny do \texorpdfstring{$+\infty$,$-\infty$}{+inf,-inf}?}
-Ciągiem nazywamy funkcję, której dziedziną jest zbiór liczb naturalnych $\mathbb{N}$ lub jego skończony odcinek początkowy ($\{1,2,3,\dots,n\}$). W 1. przypadku jest to ciąg nieskończony, w 2. - ciąg skończony n-elementowy.
+Ciągiem nazywamy funkcję, której dziedziną jest zbiór liczb naturalnych $\N$ lub jego skończony odcinek początkowy ($\{1,2,3,\dots,n\}$). W 1. przypadku jest to ciąg nieskończony, w 2. - ciąg skończony n-elementowy.
 
-Ciąg zbieżny - ciąg, który posiada granicę: $\lim\limits_{n\to \infty}a_n=g\in \mathbb{R}$.
-$\forall \epsilon > 0 \exists n \in \mathbb{N} \colon \abs{a_n-g}<\epsilon$ (tzn. $a_n \in (g-\epsilon,g+\epsilon)$).
+Ciąg zbieżny - ciąg, który posiada granicę: $\lim\limits_{n\to \infty}a_n=g\in \R$.
+$\forall \epsilon > 0 \exists n \in \N \colon \abs{a_n-g}<\epsilon$ (tzn. $a_n \in (g-\epsilon,g+\epsilon)$).
 
 Ciąg rozbieżny:
-$\lim\limits_{n \to \infty}a_n = \atop{+}{-} \infty \iff \forall M \in \mathbb{R} \exists N \in \mathbb{N} \forall n > N \colon a_n \atop{>}{<} M$.
+$\lim\limits_{n \to \infty}a_n = \atop{+}{-} \infty \iff \forall M \in \R \exists N \in \N \forall n > N \colon a_n \atop{>}{<} M$.
 
 \setcounter{section}{63}
 \section{Podać i udowodnić zasadnicze twierdzenie rachunku całkowego,
 które pozwala obliczyć całkę Riemanna za pomocą funkcji pierwotnej.}
-Jeżeli ${f \colon [a,b] \to \mathbb{R}}$ jest funkcją ciągłą, natomiast ${F \colon [a,b] \to \mathbb{R}}$
+Jeżeli ${f \colon [a,b] \to \R}$ jest funkcją ciągłą, natomiast ${F \colon [a,b] \to \R}$
 jest jej dowolną funkcją pierwotną, to zachodzi równość:
 \begin{equation*}
 	\int_a^b f(x) \mathrm{d}x = [ F(x) ]_a^b = F(b) - F(a)
@@ -613,7 +616,7 @@ jest jej dowolną funkcją pierwotną, to zachodzi równość:
 
 \section{Co to jest całka niewłaściwa w sensie Riemanna?}
 \subsection{Całka niewłaściwa Riemanna w przedziale $[a,b)$ lub $(a,b]$}
-Niech ${f \colon [a,b) \to \mathbb{R}}$ będzie funkcją całkowalną w sensie Riemanna
+Niech ${f \colon [a,b) \to \R}$ będzie funkcją całkowalną w sensie Riemanna
 	na każdym z przedziałów domkniętych ${[a,\beta]}$,
 	gdzie $a < \beta < b$.
 	Załóżmy, że funkcja $f$jest nieograniczona w pewnym lewostronnym sąsiedztwie punktu $b$.
@@ -636,7 +639,7 @@ W analogiczny sposób definiuje się całkę niewłaściwą Riemanna ${\int_a^b 
 \end{equation*}
 
 \subsection{Całka niewłaściwa Riemanna w przedziale $(a,b)$}
-Niech ${f \colon (a, b) \to \mathbb{R}}$ będzie funkcją całkowalną w sensie Riemanna
+Niech ${f \colon (a, b) \to \R}$ będzie funkcją całkowalną w sensie Riemanna
 w każdym przedziale domkniętym $[\alpha,\beta]$, przy czym $a < \alpha < \beta < b$.
 Załóżmy, że funkcja $f$ jest nieograniczona w pewnym prawostronnym sąsiedztwie punktu $a$ oraz
 w pewnym lewostronnym sąsiedztwie punktu $b$.
@@ -675,7 +678,7 @@ W powyższych definicjach \ref{def.1} i \ref{def.2} można podstawić $-\infty$ 
 	\item
 		$\int_{-\infty}^{\infty} f(x) \mathrm{d}x
 		\coloneqq
-		\int_{-\infty}^{c} f(x) \mathrm{d}x + \int_{c}^{\infty} f(x) \mathrm{d}x$ ($c \in \mathbb{R}$).
+		\int_{-\infty}^{c} f(x) \mathrm{d}x + \int_{c}^{\infty} f(x) \mathrm{d}x$ ($c \in \R$).
 \end{itemize}
 
 \section{Obliczyć całkę niewłaściwą funkcji
@@ -740,7 +743,7 @@ A zatem
 	\texorpdfstring{$ \alpha $}{a}.
 }
 \subsection{Teoria}
-Niech $f \colon [n_0,\infty) \to \mathbb{R}$, $f(n)$ jest nierosnąca i nieujemna dla $n> n_0$. %]
+Niech $f \colon [n_0,\infty) \to \R$, $f(n)$ jest nierosnąca i nieujemna dla $n> n_0$. %]
 [Analogicznie dla niemalejącej i niedodatniej.]
 \begin{equation*}
 	\textnormal{Wówczas: \enskip}
@@ -749,7 +752,7 @@ Niech $f \colon [n_0,\infty) \to \mathbb{R}$, $f(n)$ jest nierosnąca i nieujemn
 	\int_{n_0}^\infty f(n) \mathrm{d}n \textnormal{ \enskip jest zbieżna}
 \end{equation*}
 \begin{proof}%{\textit{(z wykładu)}}
-	Weźmy $a_n \coloneqq \int_n^{n+1} f(x) \mathrm{d}x$ ($n \geq n_0$, $n \in \mathbb{N}$).
+	Weźmy $a_n \coloneqq \int_n^{n+1} f(x) \mathrm{d}x$ ($n \geq n_0$, $n \in \N$).
 	Zauważmy, że $f(n)$ jest równe polu prostokąta o bokach $1$~i~$f(n)$.
 	Mamy:
 	$a_n \leq f(n) \leq a_{n-1}$
@@ -870,7 +873,7 @@ Niech $f \colon [n_0,\infty) \to \mathbb{R}$, $f(n)$ jest nierosnąca i nieujemn
 Szereg jest zbieżny $\iff \alpha > 1$
 
 \section{Podać wzór na długość krzywej zadanej parametrycznie.}
-Niech $-\infty < a < b < \infty$ oraz $f_1, f_2, \dots, f_n \colon [a,b] \to \mathbb{R}$ będą funkcjami ciągłymi klasy $C^1$. Krzywą nazywamy zbiór punktów ${\gamma = \{ (x_1, x_2, \dots, x_n) \in \mathbb{R}^n \colon x_1 = f_1 (t), x_2 = f_2 (t), \dots, x_n = f_n (t), t \in [a,b] \} }$.
+Niech $-\infty < a < b < \infty$ oraz $f_1, f_2, \dots, f_n \colon [a,b] \to \R$ będą funkcjami ciągłymi klasy $C^1$. Krzywą nazywamy zbiór punktów ${\gamma = \{ (x_1, x_2, \dots, x_n) \in \R^n \colon x_1 = f_1 (t), x_2 = f_2 (t), \dots, x_n = f_n (t), t \in [a,b] \} }$.
 
 Wówczas długość krzywej wyraża się wzorem:
 \begin{equation*}
