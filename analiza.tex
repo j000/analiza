@@ -594,6 +594,233 @@ $\forall \epsilon > 0 \exists n \in \N \colon \abs{a_n-g}<\epsilon$ (tzn. $a_n \
 Ciąg rozbieżny:
 $\lim\limits_{n \to \infty}a_n = \atop{+}{-} \infty \iff \forall M \in \R \exists N \in \N \forall n > N \colon a_n \atop{>}{<} M$.
 
+\section{Podać i udowodnić tw. o granicy ciągu monotonicznego i ograniczonego.}
+Każdy ciąg ograniczony i monotoniczny jest zbieżny.
+\begin{proof}
+	Niech $a_n\nearrow$, ograniczony.
+	\begin{equation*}
+		\begin{gathered}
+			g \coloneqq \sup\{ a_n \colon n \in \N\}
+			\\ \lim_{n\to\infty} a_n = g \quad ?
+			\\ \forall n \in \N \colon a_n \leq g
+			\\ \textnormal{z def. sup.:} \forall \epsilon > 0 \exists N \in \N \colon a_N > g - \epsilon
+			\\ \textnormal{wtedy} \forall n > N \colon
+			\\ g - \epsilon < a_N \leq a_n \leq g < g + \epsilon
+		\end{gathered}
+	\end{equation*}
+\end{proof}
+
+\section{Podać i udowodnić tw. o trzech ciągach.}
+Jeżeli $\exists N \forall n \geq N \colon a_n \leq b_n \leq c_n$ oraz $\displaystyle\lim_{n\to\infty}a_n = \lim_{n\to\infty}c_n=g$ to $\displaystyle\lim_{n\to\infty}b_n=g$.
+\begin{proof}
+	Z def. granicy ciągu:
+	\begin{gather*}
+		\forall \epsilon > 0 \exists N_1 \in \N \forall n \geq N_1 \colon \abs{a_n-g} < \epsilon
+		\\ g-\epsilon < a_n < g+\epsilon
+	\end{gather*}
+	Analogicznie:
+	\begin{gather*}
+		\forall \epsilon > 0 \exists N_2 \in \N \forall n \geq N_2 \colon \abs{c_n-g} < \epsilon
+		\\ g-\epsilon < c_n < g+\epsilon
+	\end{gather*}
+	Niech $N_3 = \max\{N,N_1,N_2\}$. Z powyższych nierówności wynika, że $g-\epsilon < a_n$ oraz $c_n < g + \epsilon$. Więc:
+	\begin{gather*}
+		\forall n \geq N_3 \colon g-\epsilon < a_n \leq b_n \leq c_n < g + \epsilon
+		\\ \forall n \geq N_3 \colon \abs{b_n-g} < \epsilon
+	\end{gather*}
+\end{proof}
+
+\section{Podać i udowodnić tw. o granicy sumy, iloczynu, ilorazu ciągów.}
+Jeżeli $\displaystyle\lim_{n\to\infty}a_n=a$,$\displaystyle\lim_{n\to\infty}b_n=b$, $a,b \in \R$ to
+\begin{multicols}{2}
+	[\subsection{Suma granic}]
+	\raggedcolumns
+	\begin{equation*}
+		\lim_{n\to\infty}(a_n+b_n)=a+b
+	\end{equation*}
+	\begin{proof}
+		$\epsilon > 0$, z def. granic ciągów:
+		\begin{gather*}
+			\exists N_1 \forall n > N_1 \colon \abs{a_n-a} < \frac{\epsilon}{2}
+			\\ 	\exists N_2 \forall n > N_2 \colon \abs{b_n-b} < \frac{\epsilon}{2}
+			\\N = \max\{N_1,N_2\}
+		\end{gather*}
+		Wtedy $\forall n > N$ mamy:
+		\begin{align*}
+			\abs{(a_n+b_n)-(a+b)} &= \abs{(a_n-a)+(b_n-b)}
+			\\ &< \abs{a_n-a} + \abs{b_n-b}
+			\\ &< \frac{\epsilon}{2}+\frac{\epsilon}{2}
+			\\ &= \epsilon
+		\end{align*}
+	\end{proof}
+\end{multicols}
+
+\begin{multicols}{2}
+	[\subsection{Iloczyn granic}]
+	\raggedcolumns
+	\begin{equation*}
+		\lim_{n\to\infty}(a_nb_n)=ab
+	\end{equation*}
+	\begin{proof}
+		Ciągi $a_n$, $b_n$ są zbieżne do $a$,$b$. Zatem ciągi te są ograniczone, czyli:
+		\begin{equation*}
+			\exists M>0 \forall n \in \N \colon \abs{a_n}, \abs{b_n} < M
+		\end{equation*}
+		Biorąc dowolne $\epsilon > 0$, z def. granicy mamy:
+		\begin{gather*}
+			\exists N_1 \forall n > N_1 \colon \abs{a_n-a} < \frac{\epsilon}{2M}
+			\\ 	\exists N_2 \forall n > N_2 \colon \abs{b_n-b} < \frac{\epsilon}{2M}
+			\\N = \max\{N_1,N_2\}
+		\end{gather*}
+		Wtedy $\forall n > N$ mamy:
+		\begin{align*}
+			\abs{a_nb_n-ab} &= \abs{(a_n-a)b_n+a(b_n-b)}
+			\\ & \leq \abs{a_n-a}\cdot \abs{b_n}+\abs{a} \cdot \abs{b_n-b}
+			\\ & < \abs{a_n-a}M + M\abs{b_n-b}
+			\\ & < \frac{\epsilon}{2M}M + M\frac{\epsilon}{2M}% & \textnormal{z \eqref{eq.limmul}}
+			\\ & = \frac{\epsilon}{2} + \frac{\epsilon}{2}
+			\\ & = \epsilon
+		\end{align*}
+	\end{proof}
+\end{multicols}
+
+\subsection{Iloraz granic}
+\begin{equation*}
+	\lim_{n\to\infty}(\frac{a_n}{b_n})=\frac{a}{b}
+\end{equation*}
+\begin{proof}
+	Pokażemy najpierw, że $\displaystyle\lim_{n \to \infty}\frac{1}{b_n} = \frac{1}{b}$:
+	\begin{equation*}
+		\exists M > 0 \forall n \colon \abs{\frac{1}{b_n}} <M
+	\end{equation*}
+	\begin{equation*}
+		\exists N \forall n > N \colon \abs{b_n-b}<\frac{\abs{b}\epsilon}{M}
+	\end{equation*}
+	\begin{align*}
+		\abs{\frac{1}{b_N}-\frac{1}{b}} &= \abs{\frac{b-b_n}{bb_n}}
+		\\ &= \abs{b_n-b}\cdot\abs{\frac{1}{b}}\cdot\frac{1}{\abs{b_n}}
+		\\ & < \frac{\abs{b}\epsilon}{M} \cdot \frac{1}{\abs{b}} \cdot M
+		\\ &= \epsilon
+	\end{align*}
+	Korzystając z twierdzenia o iloczynie granic:
+	\begin{equation*}
+		\lim_{n\to\infty}\frac{a_n}{b_N} = \lim_{n\to\infty}(a_n \cdot\frac{1}{b_N})=a\cdot\frac{1}{b}=\frac{a}{b}
+	\end{equation*}
+\end{proof}
+
+\section{Co to jest podciąg? Punkt skupienia ciągu?}
+\subsection{Podciąg}
+Podciągiem ciągu $(a_n)_{n \in\N}$ nazywamy ciąg $(a_{n_k})_{k\in\N}$, gdzie $n_1<n_2<\dots$.
+
+\subsection{Punkt skupienia}
+$a\in\R$ jest punktem skupienia ciągu $a_n$, gdy $\forall \epsilon > 0$ nieszkończenie wiele wyrazów ciągu $a_n$ leży w przedziale $(a-\epsilon,a+\epsilon)$.
+\begin{equation*}
+	\forall \epsilon > 0 \forall N\in\N \exists n>N \colon a_n \in (a-\epsilon,a+\epsilon)
+\end{equation*}
+\begin{itemize}
+	\item Jeżeli ciąg $a_n$ jest zbieżny $\displaystyle\lim_{n\to\infty}a_n = g$ to $g$ jest jedynym punktem skupienia ciągu.
+	\item Jeśli $a$ jest punktem skupienia zbioru wyrazów ciągu $(a_n)$, to jest punktem skupienia ciągu $(a_n)$. Ale nie na odwrót!
+	\item Jeśli $a$ jest punktem skupienia ciągu $(a_n) \iff \exists \textnormal{podciąg} (a_{n_k})_{k\in\N}$ zbieżny do $a$.
+\end{itemize}
+
+\section{Sformułować i udowodnić tw. Bolzano-Weierstrassa.}
+Każdy nieskończony i ograniczony zbiór $E\in\R$ ma punkt skupienia.
+\begin{proof}
+	$E\subseteq[a_0,b_0] \quad a_0,b_0 \in\R, a_0 \leq b_0$
+
+	Nieskończenie wiele elementów zbioru $E$ leży w $\left[a_0,\frac{a_0+b_0}{2}\right]$ lub $\left[\frac{a_0+b_0}{2},b_0\right]$.
+	\begin{itemize}
+		\item Nieskończenie wiele wyrazów zbioru $E$ leży w $[a_1,b_1]$, $b_1-a_1=\frac{b_0-a_0}{2}$.
+		\item Nieskończenie wiele wyrazów zbioru $E$ leży w $[a_2,b_2]$, $b_2-a_2=\frac{b_1-a_1}{2}=\frac{b_0-a_0}{2\cdot2}$.
+		\item \dots
+	\end{itemize}
+	Otrzymujemy w ten sposób zstępujący ciąg przedziałów $[a_n,b_n]$ o długości $\frac{b_0-a_0}{2^n}$.
+
+	\begin{proof}[Lemat]
+		Jeśli $[a_n,b_n]$, $n\in\N$, których długości $b_n-a_n \xrightarrow[n\to\infty]{} 0$, to
+	$\bigcap\limits_{n\in\N}[a_n,b_n]$ jest zbiorem jednoelementowym.
+
+	Ciągli $(a_n)$ i $(b_n)$ są ograniczone i monotoniczne, więc mają granice: $a_n\nearrow a$, $b_n\searrow b$.
+	\begin{align*}
+		0 & = \lim_{n\to\infty}(b_n-a_n) = \lim_{n\to\infty}(b_n)-\lim_{n\to\infty}(a_n)
+		\\ &= b-a
+		\\ b &= a
+	\end{align*}
+	Stąd $\displaystyle\bigcap\limits_{n\in\N}[a_n,b_n] = \{a\}$ ← singleton.
+	\end{proof}
+
+	Więc dla naszego ciągu $\displaystyle\bigcap\limits_{n\in\N}[a_n,b_n] = \{a\}$. Wtedy $a$ jest punktem skupienia zbioru $E$.
+\end{proof}
+
+\section{Podać warunek Cauchy'ego zbieżności ciągu i udowodnić jego równoważność ze zbieżnością ciągu liczbowego.}
+Definicja Cauchy'ego (epsilonowo-deltowa): $\lim\limits_{x\to c} f(x)=g \in \R$, gdy:
+\begin{gather*}
+	\forall \epsilon > 0 \exists \delta > 0 \forall x \in (a,b) \colon 0 < \abs{x - c} < \delta \implies \abs{f(x) - g} < \epsilon
+	\\ x \in (c - \delta, c + \delta) \quad x \neq c \implies f(x) \in (g - \epsilon, g + \epsilon)
+\end{gather*}
+Definicja Heinego (ciągowa): $\lim\limits_{x\to c} f(x)=g \in \R$, gdy:
+\begin{equation*}
+	\forall (x_m)_n \in (a,b) \quad (x_m \neq c) \colon x_m \xrightarrow[n\to\infty]{} c \implies f(x_m) \xrightarrow[n\to\infty]{} g
+\end{equation*}
+Obie definicje są równoważne.
+\begin{multicols}{2}
+	\raggedcolumns
+	\begin{proof}
+		(C)$\implies$(H)
+		\\ Niech $(x_n) \subseteq (a,b)$, $x_n \neq c$, $x_n \xrightarrow[n\to\infty]{} c$.
+		Bierzemy $\epsilon > 0$.
+		\\ Z def:
+		\begin{equation*}
+			\exists \delta > 0 \forall x \in (a,b) \colon \abs{x-c}<\delta \implies \abs{f(x)-g} < \epsilon
+		\end{equation*}
+		Ponieważ $x_n\xrightarrow{} c$, więc
+		\begin{equation*}
+			\exists N \in \N \forall n > N \colon \abs{x_n-c}<\delta
+		\end{equation*}
+		Stąd
+		\begin{equation*}
+			\abs{f(x_n) - g} < \epsilon
+		\end{equation*}
+	\end{proof}
+	\columnbreak
+	\begin{proof}
+		(H)$\implies$(C) (Dowód nie wprost)
+		\\ Zakładamy
+		\begin{equation*}
+			\exists \epsilon > 0 \forall \delta > 0 \exists x \in (a,b) \colon 0<\abs{x-c}<\delta \land \abs{f(x)-g} \geq \epsilon
+		\end{equation*}
+		Obieramy $\delta = \frac{1}{n}$
+		\begin{equation*}
+			\exists x_n \in (a,b)  \quad x_n\neq c \colon \abs{x_n - c} < \frac{1}{n} \land \abs{f(x_n)-g}\geq \epsilon
+		\end{equation*}
+		Wtedy
+		\begin{equation*}
+			x_n \xrightarrow[n\to\infty]{}c \land \abs{f(x_n)-g} \geq \epsilon \implies \neg (f(x_n) \xrightarrow{} g) \quad \textnormal{sprzeczność}
+		\end{equation*}
+	\end{proof}
+\end{multicols}
+
+\section{Wykazać, że istnieje granica ciągu \texorpdfstring{$\sqrt[n]{n}$}{n\textasciicircum(1/n)} i jest równa $1$.}
+\begin{equation*}
+	\lim_{n\to\infty} \sqrt[n]{n} = 1
+\end{equation*}
+\begin{align*}
+	\sqrt[n]{n} &= 1 + \epsilon_n & \quad \epsilon_n \geq 0
+	\\ n &= (1+\epsilon_n)^n
+	\\ &= 1 + n\epsilon_n + \binom{n}{2}\epsilon_n^2 + \dots
+	\\ &> \frac{1}{2}n(n+1)\epsilon_n^2
+\end{align*}
+\begin{equation*}
+	\begin{CD}
+		0 @. \quad \leq \quad @. \epsilon_n @. \quad \leq \quad @. \sqrt{\frac{2}{n+1}} \\
+		@VVV  @. @VVV @. @VVV \\
+		0 @. @. 0 @. @. 0
+	\end{CD}
+\end{equation*}
+\begin{equation*}
+	\sqrt[n]{n} = 1 + \epsilon_n \to 1+0 = 1
+\end{equation*}
+
 \setcounter{section}{63}
 \section{Podać i udowodnić zasadnicze twierdzenie rachunku całkowego,
 które pozwala obliczyć całkę Riemanna za pomocą funkcji pierwotnej.}
