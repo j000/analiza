@@ -4,7 +4,8 @@
 \usepackage[
 	a4paper,
 	margin=1.5cm,
-	includehead,
+	centering,
+	nohead,
 	includefoot
 ]{geometry}
 % cols
@@ -62,12 +63,9 @@
 %custom headers and footers
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\fancyhf{}
+\fancyhf{} % clear all header and footer fields
 \renewcommand{\headrulewidth}{0pt}
-\makeatletter
-\rhead{\footnotesize \@title}
 \cfoot{\footnotesize Strona \thepage \hspace{1pt} z \pageref{LastPage}}
-\makeatother
 
 % dotted lines in ToC
 \usepackage{tocloft} % for dots in ToC
@@ -92,9 +90,12 @@
 % prefer no hypenation
 \righthyphenmin=62
 \lefthyphenmin=62
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\emergencystretch 4em
 
 % don't hypenate sections
-\usepackage{titlesec}
+\usepackage[nobottomtitles*]{titlesec}
 \titlelabel{\thetitle.\enskip}
 % smaller font for title dots in section titles
 % \titleformat{\section}{\normalfont\fontsize{12}{15}\bfseries}{\thesection.}{0.75em}{}
@@ -134,6 +135,11 @@
 \def\abs{\@ifstar{\oldabs}{\oldabs*}}
 \let\oldnorm\norm
 \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
 
 \DeclareMathOperator{\tg}{tg}
 \DeclareMathOperator{\ctg}{ctg}
@@ -145,6 +151,7 @@
 \renewcommand\arraystretch{1.2}
 
 \begin{document}
+\thispagestyle{empty}
 
 % bookmark title page
 \makeatletter
@@ -152,7 +159,7 @@
 \makeatother
 
 % title page
-\pagenumbering{gobble}
+\pagenumbering{Alph}
 \begin{titlepage}
 	\vspace*{\fill}
 	\begin{center}
@@ -162,7 +169,9 @@
 		\makeatother
 	\end{center}
 	\vspace*{\fill}
-	\tableofcontents
+	\tableofcontents{
+		\thispagestyle{empty}
+	}
 \end{titlepage}
 
 \newpage
