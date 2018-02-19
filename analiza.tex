@@ -443,7 +443,7 @@ $f \colon \C \to \C$, $a,b,c,d \in \C$, $ad-bc \neq 0$, $f(z) = \frac{az+b}{cz+d
 	\\ z &= \frac{b-xd}{xc-a}
 	\\ z &= \frac{-xd+b}{xc-a}
 	\\ &\Downarrow
-	\\ f^{-1}(z) &= \frac{-dz+b}{cz-a}
+	\\ f^{-1}(x) &= \frac{-dx+b}{cx-a}
 \end{align*}
 
 \section{Podać zasadę indukcji matematycznej.}
@@ -459,7 +459,7 @@ to $T(n)$ jest zdaniem prawdziwym dla każdej liczby naturalnej $n \geq n_0$.
 	Jeśli $x \geq -1$:
 	\begin{equation*}
 		\begin{cases}
-			(1+x)^\alpha \leq 1 + \alpha x & \textnormal{dla\:} 0 < \alpha \leq 1
+			(1+x)^\alpha < 1 + \alpha x & \textnormal{dla\:} 0 < \alpha < 1
 			\\ (1+x)^\alpha \geq 1 + \alpha x & \textnormal{dla\:} \alpha \geq 1
 		\end{cases}
 	\end{equation*}
@@ -489,8 +489,8 @@ to $T(n)$ jest zdaniem prawdziwym dla każdej liczby naturalnej $n \geq n_0$.
 				   &= (1+x)^k (1+x)
 				\\ &\geq (1+kx)(1+x) &\textnormal{\quad z założenia (wzór \ref{eq.ber})}
 				\\ &= 1+x+kx+kx^2
-				\\ &= 1+(1+k)x+kx^2
-				\\ &\geq 1+(1+k)x &\textnormal{\quad $k\geq 1$, więc $kx^2\geq 0$}
+				\\ &= 1+(1+k)x+kx^2 &\textnormal{\quad $k\geq 1$, więc $kx^2\geq 0$}
+				\\ &\geq 1+(1+k)x
 			\end{align*}
 	\end{enumerate}
 \end{proof}
