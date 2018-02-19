@@ -108,9 +108,8 @@
 \theoremstyle{case}
 \newtheorem{case}{Przypadek}
 
-% helper
-% \newcommand*\from{ \colon }
-
+% helpers
+\renewcommand{\atop}[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
 \let\implies\Rightarrow
 \let\iff\Leftrightarrow
 
@@ -570,7 +569,7 @@ Ciąg zbieżny - ciąg, który posiada granicę: $\lim\limits_{n\to \infty}a_n=g
 $\forall \epsilon > 0 \exists n \in \mathbb{N} \colon \abs{a_n-g}<\epsilon$ (tzn. $a_n \in (g-\epsilon,g+\epsilon)$).
 
 Ciąg rozbieżny:
-$\lim\limits_{n \to \infty}a_n = {+ \atop -} \infty \iff \forall M \in \mathbb{R} \exists N \in \mathbb{N} \forall n > N \colon a_n {> \atop <} M$.
+$\lim\limits_{n \to \infty}a_n = \atop{+}{-} \infty \iff \forall M \in \mathbb{R} \exists N \in \mathbb{N} \forall n > N \colon a_n \atop{>}{<} M$.
 
 \setcounter{section}{63}
 \section{Podać i udowodnić zasadnicze twierdzenie rachunku całkowego,
